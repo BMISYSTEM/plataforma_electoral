@@ -1,0 +1,25 @@
+.boton{
+    @include botones($verde,block);
+    a{
+        color: $blanco;
+    }
+}
+.boton-inline{
+    @include botones($verde,inline-block);
+    a{
+        color: $blanco;
+    }
+}
+.boton-rojo-block{
+    @include botones(red,block);
+    width: 100%;
+}
+.boton-verde-block{
+    @include botones(green,block);
+}
+.boton-amarillo-block{
+    @include botones(rgb(241, 197, 20),inline-block);
+}
+.boton-transparente{
+    @include boton-dash(rgba(20, 20, 20, 0),block,rgba(20, 20, 20, 0.8));
+}

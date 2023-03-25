@@ -1,0 +1,20 @@
+{
+    "name": "bairo/ecomerce_mvc",
+    "autoload": {
+        "psr-4": {
+            "model\\": "./models/",
+            "controllers\\": "./control/",
+            "router\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "BMISYTEM",
+            "email": "baironmenesidarraga.990128@gmail.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.7",
+        "phpmailer/phpmailer": "^6.8"
+    }
+}
