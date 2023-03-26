@@ -1,23 +1,30 @@
 body{
-    background-color: rgb(158, 133, 173);
+    background-color: rgb(255, 255, 255);
 }
+// grid expandido
 .dashboard{
     display: grid;
     grid-template-columns: 20% 80%;
+    // barra lateral
     .menu-dash{
         grid-column: 1/2;
         display: grid;
         grid-template-rows:10% 10% 10% 10% 10% 10% 30%;
         width: 100%;
-        height:58rem;
-        background-color: #ffffff; 
-        border-radius: 0%;
+        height:57rem;
+        background-color: #4c81d2; 
+        border-radius: 10px;
+        margin: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.752), 0 6px 20px 0 rgba(0, 0, 0, 0.64);
+        overflow: hidden;
         .dash{
             grid-row: 2/3;
         }
     }
+    //panel lateral
     .seccion-dashboard{
-        background-color: rgb(193, 151, 204);
+        margin-left: 10px;
+        background-color: rgb(255, 255, 255);
         display: grid;
         grid-template-rows: 7% 86% 7%;
         .header-dashboard{
@@ -27,14 +34,18 @@ body{
             border-radius: 5px;
             grid-row:1/2;
             background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.485), 0 6px 20px 0 rgba(0, 0, 0, 0.435);
         }
         .content-dashboard{
+            
             margin-top: 10px;
             margin-left: 10px;
             margin-right: 3px;
             border-radius: 5px;
             grid-row: 2/3;
             background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.485), 0 6px 20px 0 rgba(0, 0, 0, 0.435);
+
         }
         .footer-dashboard{
             margin-top: 10px;
@@ -45,4 +56,106 @@ body{
             background-color: rgb(255, 255, 255);
         }
     }
+}
+// botones
+.icono{
+    padding: 0;
+    font-size: 2rem;
+    margin: 1rem;
+}
+.icono-menu{
+    padding: 0;
+    font-size: 3rem;
+    margin: 0 auto;
+}
+.logo-menu{
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+}
+// grid encogido
+.dash-en{
+    display: grid;
+    grid-template-columns: 7% 93%;
+     // barra lateral
+     .menu-dash{
+        grid-column: 1/2;
+        display: grid;
+        grid-template-rows:10% 10% 10% 10% 10% 10% 30%;
+        width: 7rem;
+        height:57rem;
+        background-color: #4c81d2; 
+        border-radius: 10px;
+        margin: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.752), 0 6px 20px 0 rgba(0, 0, 0, 0.64);
+        overflow: hidden;
+        
+        .dash{
+            grid-row: 2/3;
+        }
+        span{
+            opacity: 0;
+        }
+        .logo-menu{
+            width: 50%;
+            height: 100%;
+            margin: 0 auto;
+        }
+    }
+    //panel lateral
+    .seccion-dashboard{
+        margin-left: 10px;
+        background-color: rgb(251, 251, 251);
+        display: grid;
+        grid-template-rows: 7% 86% 7%;
+        .header-dashboard{
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 3px;
+            border-radius: 5px;
+            grid-row:1/2;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.552), 0 6px 20px 0 rgba(0, 0, 0, 0.386);
+
+        }
+        .content-dashboard{
+            
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 3px;
+            border-radius: 5px;
+            grid-row: 2/3;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.473), 0 6px 20px 0 rgba(0, 0, 0, 0.487);
+
+        }
+        .footer-dashboard{
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 3px;
+            border-radius:5px;
+            grid-row: 3/4;
+            background-color: rgb(255, 255, 255);
+        }
+    }
+}
+.header-dashboard{
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+.opciones{
+    grid-column: 2/3;
+    display: flex;
+    justify-content: space-between;
+}
+.session{
+    color: rgba(82, 79, 79, 0.685);
+}
+.foto-redonda{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+    background-color: black;
+    cursor: pointer;
 }

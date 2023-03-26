@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
 function darkmode(){
     const preferencias = window.matchMedia('(prefers-color-scheme: dark)');
-    //console.log(preferencias.matches);
+    //console.log(preferencias.matches); 
     if(preferencias.matches){
         document.body.classList.toggle('dark-mode');
     }
@@ -36,8 +36,32 @@ const abrirModal = ()  => {
                 </div>
     `;
     $('#modalzoom').html(div);
-    // $("#overlay").attr("src", "../../ag/assets/img/articles/" + $imagen);
 }
 const exit = () =>{
     overdiv.remove();
+}
+
+const mostrarcontrase = () => {
+    if(document.querySelector("#passwords.contrase")){
+        $('#passwords').attr('type','text');
+        $('#passwords').attr('class','texto');
+        $('#cont').attr('class','fa-solid fa-eye ojocerrado');
+    }else{
+        $('#passwords').attr('type','password');
+        $('#passwords').attr('class','contrase');
+        $('#cont').attr('class','fa-solid fa-eye-slash ojocerrado');
+    }
+}
+
+const menu = () =>{
+    if(document.querySelector("#dash.dashboard")){
+        $('#dash').attr('class','dash-en');
+        $('#menu').attr('class','boton-transparente-menu-en');
+
+    }else{
+        $('#dash').attr('class','dashboard');
+        console.log("no la tiene");
+        $('#menu').attr('class','boton-transparente-menu');
+
+    }
 }

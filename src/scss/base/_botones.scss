@@ -21,5 +21,52 @@
     @include botones(rgb(241, 197, 20),inline-block);
 }
 .boton-transparente{
+    @include boton-dash(rgba(20, 20, 20, 0),flex,rgba(20, 20, 20, 0.8));
+    padding: 2px;
+    &:hover{
+        border-bottom: 3px solid rgb(104, 192, 160);
+    }
+    &:focus-within{
+        border-bottom: 3px solid rgb(104, 192, 160);
+    }
+}
+.boton-transparente-en{
     @include boton-dash(rgba(20, 20, 20, 0),block,rgba(20, 20, 20, 0.8));
+    padding: 0;
+    width: 6.7rem;
+    span{
+        opacity: 0;
+    }
+    &:hover{
+        border-bottom: 3px solid rgb(104, 192, 160);
+    }
+    &:focus-within{
+        border-bottom: 3px solid rgb(104, 192, 160);
+    }
+}
+.boton-transparente-menu{
+    @include boton-dash(rgba(20, 20, 20, 0),flex,rgba(20, 20, 20, 0.8));
+    border-radius: 80%;
+    width: 5rem;
+    height: 5rem;
+    padding: 2px;
+    margin: 0 auto;
+    padding: 2px;
+}
+.boton-transparente-menu-en{
+    display: block;
+    padding: 2rem;
+    height: 5rem;
+    width: 7rem;
+    border-radius: 8px;
+    color: white;
+    &:hover{
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+    span{
+        opacity: 0;
+    }
+   
 }

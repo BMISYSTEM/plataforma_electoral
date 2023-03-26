@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="build/css/app.css">
     <script src="build/js/jquery.js"></script>
     <title>Login</title>
@@ -30,13 +31,14 @@
             <form method="POST" class="formulario" action="/">
                 <label for="">Usuario</label>
                 <input type="text" placeholder="Usuario" required name="email">
-                <p  onclick="abrirModal()">Olvido su Contraseña?</p>
+                <p  ></p>
+                
                 <label for="">Constraseña</label>
-                <input type="password" required name="pasword">
-                <div class="ojos">
-                    <img  src="imagenes/ojos-cerrados.png" alt="logo de la empresa" class="ojocerrado">
+                <div class="ojos" onclick="mostrarcontrase()" id="ojos">
+                <i class="fa-solid fa-eye-slash ojocerrado" id="cont"></i>
                 </div>
-                <p href="" onclick="abrirModal()">Olvido su Usuario?</p>
+                <input type="password" required name="pasword" id="passwords" class="contrase">
+                <p  onclick="abrirModal()">Olvido su Contraseña?</p>
                 <input type="submit" value="Ingresar" class="boton-inline" value="Password">
             </form>
         </div>
