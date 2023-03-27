@@ -1,0 +1,31 @@
+.formularios{
+    display: grid;
+    place-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    .secciones{
+        display: flex;
+        justify-content: space-between;  
+    }
+    .tarjetas{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.569), 0 6px 20px 0 rgba(23, 22, 22, 0.439);
+        background-color: rgba(129, 122, 122, 0.433); 
+        backdrop-filter: blur(4.0px);
+        margin: 2rem;
+        border-radius: 8px;
+        padding: 1rem;
+        color: rgb(46, 42, 42);
+    }
+    .boton-linea{
+        background-color: #71b100;
+        border: none;
+        color: #fff;
+        display: block;
+        font-weight: 700;
+        margin: 0 auto;
+        padding: 1rem 3rem;
+        text-align: center;
+        text-decoration: none;
+    }
+}

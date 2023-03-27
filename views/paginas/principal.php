@@ -10,51 +10,59 @@
     <script src="build/js/jquery.js"></script>
     <title>Dashboard</title>
 </head>
-<body>
+<body id="body" class="body">
+    <div id="modalzoom"></div>
     <div class="dashboard" id="dash">
         <div class="menu-dash" id="barra-lateral">
             <!-- expandir menu -->
             <div class="boton-transparente-menu" id="menu" onclick="menu()">
             <i class="fa-sharp fa-solid fa-bars  fa-xs icono-menu"></i>
             </div>
+            <div class="barra-separador"></div>
             <!-- menu -->
-            <div class="boton-transparente" id="opone">
+            <div class="boton-transparente" id="opone" onclick="dahss()">
             <i class="  fa-solid fa-chart-simple icono"></i>
                 <span>Dashboard</span>
             </div>
-            <div class="boton-transparente" id="opthu">
+            <div class="boton-transparente" id="opthu" onclick="Formulario_lideres()">
                 <i class="fa-solid fa-users icono"></i>
                  <span>Usualios Lideres</span>
             </div>
-            <div class="boton-transparente" id="optree">
+            <div class="boton-transparente" id="optree" onclick="Formulario_puestos()">
                 <i class="fa-solid fa-check-to-slot icono"></i>
                 <span>Puestos de votacion</span>
             </div>
-            <div class="boton-transparente" id="opfor">
+            <div class="boton-transparente" id="opfor" onclick="Formulario_votantes()">
                 <i class="fa-solid fa-person-booth icono"></i>
                 <span>Votantes</span>
             </div>
-           
-                
+            <div class="opciondark" id="opfor">
+            <i class="fa-solid fa-toggle-on dark"  id="claro" onclick="darkmodedash()"></i>
+                <span id="valida"    class="modoclaro">Modo noche</span>
+            </div>   
         </div>
         <div class="seccion-dashboard">
             <div class="header-dashboard">
+                <div class="titulos" id="titulos">
+                    <!--aca van los titulos de las paginas-->
+                </div>
                 <div class="opciones">
                     <span class="session">
+                        
                         <?php echo $_SESSION['usuario']?>
                     </span>
-                    <div id="foto" class="foto-redonda">
+                    <div id="foto" class="foto-redonda" onclick="abrirModal()">
                         <img src="" alt="" >
                     </div>
                 </div>
                     
                 <!-- aca se remplaza por los titulos y la seccion -->
             </div>
-            <div class="content-dashboard">
+            <div class="content-dashboard" id="contenido">
                 <!-- aca se remplaza por las pantallas que se necesitan -->
             </div>
             <div class="footer-dashboard">
-
+                <p>Desarrollado por: Bayron meneses</p>
             </div>
         </div>
     </div>

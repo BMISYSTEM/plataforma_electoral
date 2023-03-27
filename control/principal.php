@@ -7,5 +7,10 @@ class principal{
 
         ]);
     } 
+    public static function formulario(Router $router){
+        $router->render('templates/lideres',[
+
+        ]);
+    } 
 }
 ?>

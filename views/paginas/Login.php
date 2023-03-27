@@ -39,7 +39,7 @@
                 </div>
                 <input type="password" required name="pasword" id="passwords" class="contrase">
                 <p  onclick="abrirModal()">Olvido su Contraseña?</p>
-                <input type="submit" value="Ingresar" class="boton-inline" value="Password">
+                <input type="submit" value="Ingresar" class="boton-inline" >
             </form>
         </div>
     </div>

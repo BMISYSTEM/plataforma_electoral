@@ -30,6 +30,24 @@
         border-bottom: 3px solid rgb(104, 192, 160);
     }
 }
+.boton-seleccion{
+    align-items: center;
+    background-color: rgba(36, 37, 45, 0.561);
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    display: flex;
+    font-weight: 700;
+    height: 100%;
+    margin: 0;
+    padding: 2px;
+    text-decoration: none;
+    width: 100%;
+    border-left: 5px solid rgb(104, 192, 160);;
+    &:hover{
+        border-bottom: 3px solid rgb(104, 192, 160);
+    }
+}
 .boton-transparente-en{
     @include boton-dash(rgba(20, 20, 20, 0),block,rgba(20, 20, 20, 0.8));
     padding: 0;
@@ -52,6 +70,7 @@
     padding: 2px;
     margin: 0 auto;
     padding: 2px;
+    border-bottom: 3px solid rgb(104, 192, 160);
 }
 .boton-transparente-menu-en{
     display: block;
@@ -60,6 +79,7 @@
     width: 7rem;
     border-radius: 8px;
     color: white;
+    
     &:hover{
         background-color: black;
         color: white;

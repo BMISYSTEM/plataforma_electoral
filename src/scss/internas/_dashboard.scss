@@ -1,59 +1,80 @@
-body{
-    background-color: rgb(255, 255, 255);
+:root{
+    --color-menu:rgba(36, 111, 136, 0.797);
+    --color-texto-heder: rgba(81, 83, 84, 0.926);
+    --color-div-contenido: transparent;
+    --color-div-footer: transparent;
+    --body-color: white;
+    --texto:rgb(46, 42, 42);
+    --trajetas-div: transparent;
+}
+.body{
+   
 }
 // grid expandido
 .dashboard{
     display: grid;
     grid-template-columns: 20% 80%;
+    height: 100vh;
+    width: 100%;
     // barra lateral
     .menu-dash{
+        z-index: 99999;
         grid-column: 1/2;
         display: grid;
         grid-template-rows:10% 10% 10% 10% 10% 10% 30%;
         width: 100%;
-        height:57rem;
-        background-color: #4c81d2; 
+        height: 100vh;
+        background-color: var(--color-menu);
+        backdrop-filter: blur(4.0px);
         border-radius: 10px;
         margin: 5px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.752), 0 6px 20px 0 rgba(0, 0, 0, 0.64);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
         overflow: hidden;
         .dash{
             grid-row: 2/3;
         }
     }
-    //panel lateral
+    //seccion dash 2 columna del grit principal
     .seccion-dashboard{
         margin-left: 10px;
-        background-color: rgb(255, 255, 255);
+        background-color: transparent;
         display: grid;
         grid-template-rows: 7% 86% 7%;
+        overflow: hidden;
+        //parte superior de la segunda columan del grit principal y primera fila del grity actual
         .header-dashboard{
+            border-bottom: 1px solid rgba(70, 67, 67, 0.568);
             margin-top: 10px;
             margin-left: 10px;
             margin-right: 3px;
             border-radius: 5px;
             grid-row:1/2;
-            background-color: rgb(255, 255, 255);
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.485), 0 6px 20px 0 rgba(0, 0, 0, 0.435);
+            background-color: rgba(255, 255, 255, 0);
+            //box-shadow: 0 4px 8px 0 rgba(47, 46, 46, 0.563), 0 6px 20px 0 rgba(0, 0, 0, 0);
         }
+        //div contenido aca cambia segun las pantallas
         .content-dashboard{
-            
+            height: 100%;
             margin-top: 10px;
             margin-left: 10px;
             margin-right: 3px;
             border-radius: 5px;
             grid-row: 2/3;
-            background-color: rgb(255, 255, 255);
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.485), 0 6px 20px 0 rgba(0, 0, 0, 0.435);
-
+            background-color: var(--color-div-contenido);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
+            overflow: auto;
         }
         .footer-dashboard{
+             border-top: 1px solid rgba(70, 67, 67, 0.568);
             margin-top: 10px;
             margin-left: 10px;
             margin-right: 3px;
             border-radius:5px;
             grid-row: 3/4;
-            background-color: rgb(255, 255, 255);
+            background-color: var(--color-div-footer);
+            p{
+                color: var(--texto);
+            }
         }
     }
 }
@@ -64,9 +85,18 @@ body{
     margin: 1rem;
 }
 .icono-menu{
+    padding-top: 5px;
     padding: 0;
     font-size: 3rem;
     margin: 0 auto;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.211);
+}
+.barra-separador{
+    width: 100%;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.211);
+    margin-top: 0;
+    height: 3px;
+    padding: 0;
 }
 .logo-menu{
     width: 50%;
@@ -77,19 +107,21 @@ body{
 .dash-en{
     display: grid;
     grid-template-columns: 7% 93%;
+    height: 100vh;
+    width: 100%;
      // barra lateral
      .menu-dash{
+        z-index: 99999;
         grid-column: 1/2;
         display: grid;
         grid-template-rows:10% 10% 10% 10% 10% 10% 30%;
-        width: 7rem;
-        height:57rem;
-        background-color: #4c81d2; 
+        width: 6rem;
+        height:100vh;
+        background-color: var(--color-menu); 
+        backdrop-filter: blur(4.0px);
         border-radius: 10px;
         margin: 5px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.752), 0 6px 20px 0 rgba(0, 0, 0, 0.64);
         overflow: hidden;
-        
         .dash{
             grid-row: 2/3;
         }
@@ -103,53 +135,72 @@ body{
         }
     }
     //panel lateral
-    .seccion-dashboard{
+   //seccion dash 2 columna del grit principal
+   .seccion-dashboard{
+    margin-left: 10px;
+    background-color: transparent;
+    display: grid;
+    grid-template-rows: 7% 86% 7%;
+    overflow: hidden;
+    //parte superior de la segunda columan del grit principal y primera fila del grity actual
+    .header-dashboard{
+        border-bottom: 1px solid rgba(70, 67, 67, 0.568);
+        margin-top: 10px;
         margin-left: 10px;
-        background-color: rgb(251, 251, 251);
-        display: grid;
-        grid-template-rows: 7% 86% 7%;
-        .header-dashboard{
-            margin-top: 10px;
-            margin-left: 10px;
-            margin-right: 3px;
-            border-radius: 5px;
-            grid-row:1/2;
-            background-color: rgb(255, 255, 255);
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.552), 0 6px 20px 0 rgba(0, 0, 0, 0.386);
-
-        }
-        .content-dashboard{
-            
-            margin-top: 10px;
-            margin-left: 10px;
-            margin-right: 3px;
-            border-radius: 5px;
-            grid-row: 2/3;
-            background-color: rgb(255, 255, 255);
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.473), 0 6px 20px 0 rgba(0, 0, 0, 0.487);
-
-        }
-        .footer-dashboard{
-            margin-top: 10px;
-            margin-left: 10px;
-            margin-right: 3px;
-            border-radius:5px;
-            grid-row: 3/4;
-            background-color: rgb(255, 255, 255);
+        margin-right: 3px;
+        border-radius: 5px;
+        grid-row:1/2;
+        background-color: rgba(255, 255, 255, 0);
+    }
+    
+    //div contenido aca cambia segun las pantallas
+    .content-dashboard{
+        height: 100%;
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 3px;
+        border-radius: 5px;
+        grid-row: 2/3;
+        background-color: var(--color-div-contenido);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
+        overflow: auto;
+    }
+    .footer-dashboard{
+        border-top: 1px solid rgba(70, 67, 67, 0.568);
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 3px;
+        border-radius:5px;
+        grid-row: 3/4;
+        background-color: var(--color-div-footer);
+        p{
+            color: var(--texto);
         }
     }
+}
 }
 .header-dashboard{
     display: grid;
     grid-template-columns: 80% 20%;
+    height: 100%;
 }
+//1 columna del div header
+.titulos{
+    grid-column: 1/2;
+    font-size: 5px;
+    p{
+        color: rgb(46, 42, 42);
+
+    }
+}
+//2 columna del vid header
 .opciones{
     grid-column: 2/3;
     display: flex;
     justify-content: space-between;
 }
 .session{
-    color: rgba(82, 79, 79, 0.685);
+    color: rgb(46, 42, 42);
 }
 .foto-redonda{
     width: 3rem;
@@ -158,4 +209,19 @@ body{
     margin-right: 1rem;
     background-color: black;
     cursor: pointer;
+}
+.dark{
+    margin-top: 10rem;
+    margin-left: 1rem;
+    font-size: 30px;
+    color: white;
+    &:hover{
+        color: red;
+    }
+}
+.opciondark{
+    span{
+    color: rgb(46, 42, 42);
+        
+    }
 }
