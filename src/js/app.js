@@ -50,7 +50,6 @@ const menu = () =>{
 
     }else{
         $('#dash').attr('class','dashboard');
-        console.log("no la tiene");
         $('#menu').attr('class','boton-transparente-menu');
 
     }
@@ -65,6 +64,7 @@ const Formulario_lideres = () =>{
     let titulo = `<p>Registro de lideres</p>`;
     $("#titulos").html(titulo);
     let formulario = "";
+    $("#dash").get(0).style.setProperty("background-image", "url(/imagenes/2.png)");
     $("#opone").removeClass("boton-seleccion").addClass("boton-transparente");
     $("#opthu").removeClass("boton-transparente").addClass("boton-seleccion");
     $("#optree").removeClass("boton-seleccion").addClass("boton-transparente");
@@ -89,7 +89,6 @@ const Formulario_lideres = () =>{
             </div>
             <div class="tarjetas">
                 <p>Datos de contacto</p>
-        
                 <section>
                     <label for=""> Correo</label>
                     <input type="text">
@@ -102,12 +101,14 @@ const Formulario_lideres = () =>{
                 </section>
             </div>
         </div>
-        <input type="submit" class="boton-linea" value="Registrar">
+        <button type="button" class="boton-linea" onclick="Puestos()">Registrar</button>
         </form>    
 </div>`;
     $("#contenido").html(formulario);
 }
+//crea el formulario de los puestos de votaciones
 const Formulario_puestos = () =>{
+    $("#dash").get(0).style.setProperty("background-image", "url(/imagenes/4.png)");
     $("#opone").removeClass("boton-seleccion").addClass("boton-transparente");
     $("#opthu").removeClass("boton-seleccion").addClass("boton-transparente");
     $("#optree").removeClass("boton-transparente").addClass("boton-seleccion");
@@ -121,18 +122,41 @@ const Formulario_puestos = () =>{
                 <p>puesto</p>
                 <section >
                     <label for="">Ciudad</label>
-                    <input type="text">
+                    <input type="text" id="ciudad">
                     <label for="">Cuadrante</label>
-                    <input type="text">
+                    <input type="text" id="cuadrante">
                     <label for="">Numero de puesto</label>
-                    <input type="text">
+                    <input type="text" id="puesto">
             </div>
             
         </div>
-        <input type="submit" class="boton-linea" value="Registrar">
+        <button type="button" class="boton-linea" onclick="Puestos()">Registrar</button>
         </form>    
 </div>`;
+
     $("#contenido").html(formulario);
+}
+//inserta en la base de datos los puestos
+async function Puestos() {
+    const datos = new FormData();
+    let ciudad = document.getElementById("ciudad").value;
+    let cuadrante = document.getElementById("cuadrante").value;
+    let puesto = document.getElementById("puesto").value;
+    datos.append('ciudad',ciudad);
+    datos.append('cuadrante',cuadrante);
+    datos.append('puesto',puesto);
+    try {
+        const url ='http://localhost:3000/principal';
+        const respuesta = await fetch(url,{
+            method: 'POST',
+            body: datos 
+        });
+        const resultado = await respuesta.json();
+        console.log(resultado); 
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 const Formulario_votantes = () =>{
     $("#opone").removeClass("boton-seleccion").addClass("boton-transparente");
@@ -145,13 +169,13 @@ const darkmodedash = () =>{
         $("#barra-lateral").get(0).style.setProperty("background-color", "black");
         $("#contenido").get(0).style.setProperty("background-color", "transparent");
         $("#body").get(0).style.setProperty("background-color", "gray");
-        $('#claro').attr('class','fa-solid fa-toggle-off dark');
+        $('#claro').attr('class','fa-solid fa-toggle-on dark');
         $('#valida').attr('class','modoscuro');
     }else if(document.querySelector("#valida.modoscuro")){
         $("#barra-lateral").get(0).style.setProperty("background-color", "rgba(36, 111, 136, 0.797)");
         $("#contenido").get(0).style.setProperty("background-color", "transparent");
         $("#body").get(0).style.setProperty("background-color", "white");
-        $('#claro').attr('class','fa-solid fa-toggle-on dark');
+        $('#claro').attr('class','fa-solid fa-toggle-off dark');
         $('#valida').attr('class','modoclaro');
     }
 }

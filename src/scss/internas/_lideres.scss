@@ -24,8 +24,13 @@
         display: block;
         font-weight: 700;
         margin: 0 auto;
+        margin-bottom: 1rem;
         padding: 1rem 3rem;
         text-align: center;
         text-decoration: none;
+        &:hover{
+            cursor: pointer;
+            background-color: #37500c;
+        }
     }
 }

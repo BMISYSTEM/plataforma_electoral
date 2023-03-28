@@ -37,9 +37,12 @@
                 <span>Votantes</span>
             </div>
             <div class="opciondark" id="opfor">
-            <i class="fa-solid fa-toggle-on dark"  id="claro" onclick="darkmodedash()"></i>
+            <i class="fa-solid fa-toggle-off dark"  id="claro" onclick="darkmodedash()"></i>
                 <span id="valida"    class="modoclaro">Modo noche</span>
             </div>   
+            <div class="logonav" id="logonav">
+                <img class="icono-menu" id="logmenu" src="imagenes/logo_sebastian1.png" alt="logo de la empresa">
+            </div>  
         </div>
         <div class="seccion-dashboard">
             <div class="header-dashboard">
@@ -62,11 +65,10 @@
                 <!-- aca se remplaza por las pantallas que se necesitan -->
             </div>
             <div class="footer-dashboard">
-                <p>Desarrollado por: Bayron meneses</p>
+                <p>Todos los derechos reservados @ Sebastian Rico desarrollado por Bayron meneses idarraga </p>
             </div>
         </div>
     </div>
     <script src="build/js/bundle.min.js"></script>
-    
 </body>
 </html>

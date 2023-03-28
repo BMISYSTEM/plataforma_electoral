@@ -26,6 +26,7 @@
             </div>
             
         </div>
+        <button type="button" class="boton-linea" onclick="Puestos()">Registrar</button>
         <input type="submit" class="boton-linea" value="Registrar">
         </form>    
 </div>

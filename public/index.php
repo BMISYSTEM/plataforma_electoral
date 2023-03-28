@@ -9,6 +9,7 @@ $router = new Router();
 $router->get('/',[login::class,'login']);
 $router->post('/',[login::class,'login']);
 $router->get('/principal',[principal::class,'principal']);
+$router->post('/principal',[principal::class,'insert']);
 $router->get('/formularios',[principal::class,'formulario']);
 
 

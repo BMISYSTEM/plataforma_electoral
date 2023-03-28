@@ -12,5 +12,11 @@ class principal{
 
         ]);
     } 
+    public static function insert(){
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+          
+        echo json_encode($_POST);
+       }
+    } 
 }
 ?>

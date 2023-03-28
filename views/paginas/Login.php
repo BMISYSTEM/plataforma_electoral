@@ -21,7 +21,7 @@
         <div class="loginPage">
         <div class="login">
             <picture class="picture-logo">
-                <img class="logo" src="imagenes/logo_sebastian.png" alt="logo de la empresa">
+                <img class="logo" src="imagenes/logo_sebastian1.png" alt="logo de la empresa">
             </picture>
             <?php foreach($errores as $error){?>
                 <div class="alerta error">
