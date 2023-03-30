@@ -65,7 +65,7 @@
                 <!-- aca se remplaza por las pantallas que se necesitan -->
             </div>
             <div class="footer-dashboard">
-                <p>Todos los derechos reservados @ Sebastian Rico desarrollado por Bayron meneses idarraga </p>
+                <p>Todos los derechos reservados @</p>
             </div>
         </div>
     </div>

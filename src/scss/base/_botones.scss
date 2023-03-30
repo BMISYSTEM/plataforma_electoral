@@ -88,5 +88,15 @@
     span{
         opacity: 0;
     }
-   
+}
+@media (min-width: 480){
+ .boton-transparente-menu-en{
+ margin-top: 0;
+ margin-bottom: 4rem;
+ height: 8rem;
+ width: 8rem;
+ display: grid;
+ place-items: center;
+ font-size: 40px;
+ } 
 }

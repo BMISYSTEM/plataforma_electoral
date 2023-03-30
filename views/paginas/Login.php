@@ -13,11 +13,6 @@
 <div id="modalzoom">
       
 </div>
-    
-        <div class="publicidad">
-            <img src="imagenes/campanas.jpg" alt="">
-        
-        </div>
         <div class="loginPage">
         <div class="login">
             <picture class="picture-logo">

@@ -1,0 +1,48 @@
+
+.formularios_acciones{
+    background-color: rgba(36, 111, 136, 0.797);
+    backdrop-filter: blur(4.0px);
+    display: grid;
+    place-items: center;
+    height: 20rem;
+    width: 40rem;
+    border-radius: 8px;
+    .acciones{
+       width: 50%;
+        .boton-acciones-verde{
+            background-color: green;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            padding: 2px;
+            color: white;
+            span,i{
+                padding: 0;
+                display: grid;
+                place-items: center;
+            }
+            &:hover{
+                background-color: rgb(5, 85, 5);
+                border-bottom: 3px solid rgb(60, 222, 157);
+            }
+        }
+        .boton-acciones-rojo{
+            background-color: rgb(177, 64, 64);
+            border-radius: 8px;
+            margin: 3px;
+            display: flex;
+            justify-content: space-between;
+            padding: 2px;
+            color: white;
+            span,i{
+                padding: 0;
+                display: grid;
+                place-items: center;
+            }
+            &:hover{
+                background-color: rgb(148, 9, 9);
+                border-bottom: 3px solid rgb(60, 187, 222);
+            }
+        }
+    }
+}

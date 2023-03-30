@@ -20,7 +20,18 @@ function darkfuncion(){
 const abrirModal = ()  => {
     let div = ` <div class="over" id="overdiv">
                  <div class="modalaccion">
-                 <h1>acciones</h1>
+                 <div class="formularios_acciones">
+    <div class="acciones">
+        <div class="boton-acciones-verde" id="opfor" onclick="">
+            <span>Cambiar contraseña</span>
+            <i class="fa-solid fa-key"></i>
+        </div>
+        <div class="boton-acciones-rojo" id="opfor" onclick="Formulario_votantes()">
+            <span>Cerrar seccion</span>
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+    </div>
+</div>
                  </div>
                  <p class="exit" onclick="exit()">X</p>
                 </div>

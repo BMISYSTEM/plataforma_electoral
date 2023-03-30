@@ -7,38 +7,151 @@
     --texto:rgb(46, 42, 42);
     --trajetas-div: transparent;
 }
-.body{
-   
-}
-// grid expandido
-.dashboard{
-    display: grid;
-    grid-template-columns: 20% 80%;
-    height: 100vh;
-    width: 100%;
-    background-image: url(/imagenes/1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    // barra lateral
-    .menu-dash{
-        z-index: 99999;
-        grid-column: 1/2;
+
+// tablet y dispositivos mayores a 480px
+
+@media (min-width: 480px) {
+    
+    .dashboard{
         display: grid;
-        grid-template-rows:10% 10% 10% 10% 10% 10% 30%;
-        width: 100%;
+        grid-template-columns: 20% 80%;
         height: 100vh;
-        background-color: var(--color-menu);
-        backdrop-filter: blur(4.0px);
-        border-radius: 10px;
-        margin: 0;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
-        overflow: hidden;
-        .dash{
-            grid-row: 2/3;
+        width: 100%;
+        // background-color: red;
+        background-image: url(/imagenes/1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+      
+        // barra lateral
+      
+        .menu-dash{
+            grid-column: 1/2;
+            display: grid;
+            grid-template-rows:10% 10% 10% 10% 10% 10% 30%;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--color-menu);
+            backdrop-filter: blur(4.0px);
+            border-radius: 10px;
+            margin: 0;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
+            overflow: hidden;
+            
+            .dash{
+                grid-row: 2/3;
+            }
         }
+     
+      
+        //seccion dash 2 columna del grit principal
+        .seccion-dashboard{
+            grid-column: 2/3;
+            margin-left: 10px;
+            background-color: transparent;
+            display: grid;
+            grid-template-rows: 7% 86% 7%;
+            overflow: hidden;
+            //parte superior de la segunda columan del grit principal y primera fila del grity actual
+            .header-dashboard{
+                border-bottom: 1px solid rgba(70, 67, 67, 0.568);
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-right: 3px;
+                border-radius: 5px;
+                grid-row:1/2;
+                background-color: rgba(255, 255, 255, 0);
+                //box-shadow: 0 4px 8px 0 rgba(47, 46, 46, 0.563), 0 6px 20px 0 rgba(0, 0, 0, 0);
+            }
+            //div contenido aca cambia segun las pantallas
+            .content-dashboard{
+                height: 100%;
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-right: 3px;
+                border-radius: 5px;
+                grid-row: 2/3;
+                background-color: var(--color-div-contenido);
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
+                overflow: auto;
+            }
+            .footer-dashboard{
+                 border-top: 1px solid rgba(70, 67, 67, 0.568);
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-right: 3px;
+                border-radius:5px;
+                grid-row: 3/4;
+                background-color: var(--color-div-footer);
+                p{
+                    color: var(--texto);
+                    font-size: 10px;
+                }
+            }
+        }
+    
     }
-    //seccion dash 2 columna del grit principal
-    .seccion-dashboard{
+    // botones
+    .icono{
+        padding: 0;
+        font-size: 2rem;
+        margin: 1rem;
+    }
+    .icono-menu{
+        padding-top: 5px;
+        padding: 0;
+        font-size: 3rem;
+        margin: 0 auto;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.211);
+    }
+    .barra-separador{
+        width: 100%;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.211);
+        margin-top: 0;
+        height: 3px;
+        padding: 0;
+    }
+    .logo-menu{
+        width: 50%;
+        height: 100%;
+        margin: 0 auto;
+    }
+    // grid encogido
+    .dash-en{
+        display: grid;
+        grid-template-columns: 7% 93%;
+        height: 100vh;
+        width: 100%;
+        background-image: url(/imagenes/1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+         // barra lateral
+         .menu-dash{
+            z-index: 99999;
+            grid-column: 1/2;
+            display: grid;
+            grid-template-rows:10% 10% 10% 10% 10% 10% 30%;
+            width: 6rem;
+            height:100vh;
+            background-color: var(--color-menu); 
+            backdrop-filter: blur(4.0px);
+            border-radius: 10px;
+            margin: 0;
+            overflow: hidden;
+            .dash{
+                grid-row: 2/3;
+            }
+            span{
+                opacity: 0;
+            }
+            .logo-menu{
+                width: 50%;
+                height: 100%;
+                margin: 0 auto;
+            }
+        }
+        //panel lateral
+       //seccion dash 2 columna del grit principal
+       .seccion-dashboard{
         margin-left: 10px;
         background-color: transparent;
         display: grid;
@@ -53,8 +166,8 @@
             border-radius: 5px;
             grid-row:1/2;
             background-color: rgba(255, 255, 255, 0);
-            //box-shadow: 0 4px 8px 0 rgba(47, 46, 46, 0.563), 0 6px 20px 0 rgba(0, 0, 0, 0);
         }
+        
         //div contenido aca cambia segun las pantallas
         .content-dashboard{
             height: 100%;
@@ -68,7 +181,7 @@
             overflow: auto;
         }
         .footer-dashboard{
-             border-top: 1px solid rgba(70, 67, 67, 0.568);
+            border-top: 1px solid rgba(70, 67, 67, 0.568);
             margin-top: 10px;
             margin-left: 10px;
             margin-right: 3px;
@@ -81,162 +194,181 @@
             }
         }
     }
-}
-// botones
-.icono{
-    padding: 0;
-    font-size: 2rem;
-    margin: 1rem;
-}
-.icono-menu{
-    padding-top: 5px;
-    padding: 0;
-    font-size: 3rem;
-    margin: 0 auto;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.211);
-}
-.barra-separador{
-    width: 100%;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.211);
-    margin-top: 0;
-    height: 3px;
-    padding: 0;
-}
-.logo-menu{
-    width: 50%;
-    height: 100%;
-    margin: 0 auto;
-}
-// grid encogido
-.dash-en{
-    display: grid;
-    grid-template-columns: 7% 93%;
-    height: 100vh;
-    width: 100%;
-    background-image: url(/imagenes/1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-     // barra lateral
-     .menu-dash{
-        z-index: 99999;
-        grid-column: 1/2;
-        display: grid;
-        grid-template-rows:10% 10% 10% 10% 10% 10% 30%;
-        width: 6rem;
-        height:100vh;
-        background-color: var(--color-menu); 
-        backdrop-filter: blur(4.0px);
-        border-radius: 10px;
-        margin: 0;
-        overflow: hidden;
-        .dash{
-            grid-row: 2/3;
-        }
-        span{
-            opacity: 0;
-        }
-        .logo-menu{
-            width: 50%;
-            height: 100%;
-            margin: 0 auto;
-        }
     }
-    //panel lateral
-   //seccion dash 2 columna del grit principal
-   .seccion-dashboard{
-    margin-left: 10px;
-    background-color: transparent;
-    display: grid;
-    grid-template-rows: 7% 86% 7%;
-    overflow: hidden;
-    //parte superior de la segunda columan del grit principal y primera fila del grity actual
     .header-dashboard{
-        border-bottom: 1px solid rgba(70, 67, 67, 0.568);
-        margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 3px;
-        border-radius: 5px;
-        grid-row:1/2;
-        background-color: rgba(255, 255, 255, 0);
-    }
-    
-    //div contenido aca cambia segun las pantallas
-    .content-dashboard{
+        display: grid;
+        grid-template-columns: 80% 20%;
         height: 100%;
-        margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 3px;
-        border-radius: 5px;
-        grid-row: 2/3;
-        background-color: var(--color-div-contenido);
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
-        overflow: auto;
     }
-    .footer-dashboard{
-        border-top: 1px solid rgba(70, 67, 67, 0.568);
-        margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 3px;
-        border-radius:5px;
-        grid-row: 3/4;
-        background-color: var(--color-div-footer);
+    //1 columna del div header
+    .titulos{
+        grid-column: 1/2;
+        font-size: 5px;
         p{
-            color: var(--texto);
-            font-size: 10px;
+            color: rgb(46, 42, 42);
+    
         }
     }
-}
-}
-.header-dashboard{
-    display: grid;
-    grid-template-columns: 80% 20%;
-    height: 100%;
-}
-//1 columna del div header
-.titulos{
-    grid-column: 1/2;
-    font-size: 5px;
-    p{
+    //2 columna del vid header
+    .opciones{
+        grid-column: 2/3;
+        display: flex;
+        justify-content: space-between;
+    }
+    .session{
         color: rgb(46, 42, 42);
+    }
+    .foto-redonda{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+        background-color: black;
+        cursor: pointer;
+    }
+    .dark{
+        margin-top: 10rem;
+        margin-left: 1rem;
+        margin-right: 2rem;
+        font-size: 30px;
+        display: flex;
+        justify-content: space-between;
+        color: white;
+        &:hover{
+            color: red;
+        }
+    }
+    .opciondark{
+        span{
+        color: rgb(46, 42, 42);
+            
+        }
+    }
+    .logonav{
+        height: 5rem;
+        width: 5rem;
+    }
+}
 
+// dispositivos menores a 480px
+@media (max-width: 480px){
+    .dashboard{
+        display: grid;
+        grid-template-rows: 10% 90%;
+        height: 100vh;
+        width: 100%;
+        // background-color: red;
+        background-image: url(/imagenes/1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        .menu-dash{
+            grid-row: 1/2;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-menu);
+            backdrop-filter: blur(4.0px);
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+            overflow: hidden;
+            .boton-transparente-menu{
+                margin-top: 0;
+                margin-bottom: 4rem;
+                height: 8rem;
+                width: 8rem;
+                display: grid;
+                place-items: center;
+                font-size: 40px;
+                &:hover{
+                     background-color: black;   
+                     color: white;
+                     cursor: pointer;
+                }
+            }
+            .logonav{
+                margin: 0 auto;
+                height: 10rem;
+                width: 10rem;
+            }
+        }
+        .seccion-dashboard{
+            grid-row: 2/3;
+            display: grid;
+            grid-template-rows: 5% 90% 5%;
+            height: 90vh;
+            width: 100%;
+            .header-dashboard{
+                grid-row: 1/2;
+                border-bottom: 1px solid rgb(82, 77, 77);
+            }
+            .content-dashboard{
+                grid-row: 2/3;
+                overflow: auto;
+            }
+            .footer-dashboard{
+                border-top: 1px solid rgb(90, 82, 82);
+                grid-row: 3/4;
+            }
+        }
     }
-}
-//2 columna del vid header
-.opciones{
-    grid-column: 2/3;
-    display: flex;
-    justify-content: space-between;
-}
-.session{
-    color: rgb(46, 42, 42);
-}
-.foto-redonda{
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    margin-right: 1rem;
-    background-color: black;
-    cursor: pointer;
-}
-.dark{
-    margin-top: 10rem;
-    margin-left: 1rem;
-    margin-right: 2rem;
-    font-size: 30px;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    &:hover{
-        color: red;
+    .dash-en{
+        display: grid;
+        grid-template-rows: 40% 60%;
+        height: 100vh;
+        width: 100%;
+        // background-color: red;
+        background-image: url(/imagenes/1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        .menu-dash{
+            grid-row: 1/2;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-menu);
+            backdrop-filter: blur(4.0px);
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+            overflow: hidden;
+            .boton-transparente-menu-en{
+                margin-top: 0;
+                margin-bottom: 4rem;
+                height: 8rem;
+                width: 8rem;
+                display: grid;
+                place-items: center;
+                font-size: 40px;
+                &:hover{
+                     background-color: black;   
+                     color: white;
+                     cursor: pointer;
+                }
+            }
+            .logonav{
+                margin: 0 auto;
+                height: 10rem;
+                width: 10rem;
+            }
+        }
+        .seccion-dashboard{
+            grid-row: 2/3;
+            display: grid;
+            grid-template-rows: 5% 90% 5%;
+            height: 100%;
+            width: 100%;
+            .header-dashboard{
+                grid-row: 1/2;
+                border-bottom: 1px solid rgb(82, 77, 77);
+            }
+            .content-dashboard{
+                grid-row: 2/3;
+                overflow: hidden;
+            }
+            .footer-dashboard{
+                border-top: 1px solid rgb(90, 82, 82);
+                grid-row: 3/4;
+            }
+        }
     }
-}
-.opciondark{
-    span{
-    color: rgb(46, 42, 42);
-        
-    }
-}
-.logonav{
-    height: 5rem;
-    width: 5rem;
 }
