@@ -1,12 +1,14 @@
 
 .formularios_acciones{
+    z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
     background-color: rgba(36, 111, 136, 0.797);
     backdrop-filter: blur(4.0px);
     display: grid;
     place-items: center;
-    height: 20rem;
-    width: 40rem;
+    height: 50vh;
+    width: 50vh;
     border-radius: 8px;
+    overflow: auto;
     .acciones{
        width: 50%;
         .boton-acciones-verde{

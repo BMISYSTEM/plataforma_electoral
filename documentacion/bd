@@ -1,0 +1,26 @@
+
+//tabla de usuarios
+ALTER TABLE `plataforma_electoral`.`usuarios` 
+ADD COLUMN `nombre` VARCHAR(45) NOT NULL AFTER `rol`,
+ADD COLUMN `apellido` VARCHAR(45) NOT NULL AFTER `nombre`,
+ADD COLUMN `cedula` VARCHAR(45) NOT NULL AFTER `apellido`,
+ADD COLUMN `fechanacimiento` VARCHAR(45) NOT NULL AFTER `cedula`,
+ADD COLUMN `telefono` VARCHAR(45) NOT NULL AFTER `fechanacimiento`,
+ADD COLUMN `ciudad` VARCHAR(45) NOT NULL AFTER `telefono`,
+ADD COLUMN `region` VARCHAR(45) NOT NULL AFTER `ciudad`,
+
+
+
+
+
+//tabla de puesto
+
+CREATE TABLE `plataforma_electoral`.`puestos` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `numero` VARCHAR(45) NOT NULL,
+    `ciudad` VARCHAR(45) NOT NULL,
+    `cuadrante` VARCHAR(45) NOT NULL,
+    `latitude` VARCHAR(45) NULL,
+    `longitude` VARCHAR(45) NULL,
+    PRIMARY KEY (`id`));
+  

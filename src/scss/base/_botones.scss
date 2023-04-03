@@ -23,6 +23,9 @@
 .boton-transparente{
     @include boton-dash(rgba(20, 20, 20, 0),flex,rgba(20, 20, 20, 0.8));
     padding: 2px;
+    height: 10rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     &:hover{
         border-bottom: 3px solid rgb(104, 192, 160);
     }
@@ -31,27 +34,20 @@
     }
 }
 .boton-seleccion{
-    align-items: center;
-    background-color: rgba(36, 37, 45, 0.561);
-    border: none;
-    border-radius: 0;
-    color: #fff;
-    display: flex;
-    font-weight: 700;
-    height: 100%;
-    margin: 0;
+    @include boton-dash(rgba(83, 98, 151, 0.513),flex,rgba(20, 20, 20, 0.8));
     padding: 2px;
-    text-decoration: none;
-    width: 100%;
-    border-left: 5px solid rgb(104, 192, 160);;
-    &:hover{
-        border-bottom: 3px solid rgb(104, 192, 160);
-    }
+    height: 10rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;;
+    border-bottom: 2px solid rgb(32, 210, 103);
 }
 .boton-transparente-en{
     @include boton-dash(rgba(20, 20, 20, 0),block,rgba(20, 20, 20, 0.8));
     padding: 0;
     width: 6.7rem;
+    height: 10rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     span{
         opacity: 0;
     }
@@ -62,41 +58,79 @@
         border-bottom: 3px solid rgb(104, 192, 160);
     }
 }
-.boton-transparente-menu{
-    @include boton-dash(rgba(20, 20, 20, 0),flex,rgba(20, 20, 20, 0.8));
-    border-radius: 80%;
-    width: 5rem;
-    height: 5rem;
-    padding: 2px;
-    margin: 0 auto;
-    padding: 2px;
-    border-bottom: 3px solid rgb(104, 192, 160);
-}
-.boton-transparente-menu-en{
-    display: block;
-    padding: 2rem;
-    height: 5rem;
-    width: 7rem;
-    border-radius: 8px;
-    color: white;
-    
-    &:hover{
-        background-color: black;
+
+@media(max-width: 480px){
+    .boton-transparente-menu{
+       
+        margin-bottom: 4rem;
+        height: 8rem;
+        width: 8rem;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 40px;
+        &:hover{
+             background-color: black;   
+             border-bottom: 2px solid rgb(32, 210, 103);
+             color: white;
+             cursor: pointer;
+        }
+    }
+    .boton-transparente-menu-en{
+        margin-bottom: 4rem;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        height: 5rem;
+        width: 7rem;
+        border-radius: 0%;
         color: white;
-        cursor: pointer;
-    }
-    span{
-        opacity: 0;
+        margin-right: 0;
+        &:hover{
+            background-color: black;   
+            border-bottom: 2px solid rgb(32, 210, 103);
+            color: white;
+            cursor: pointer;
+       }
+        span{
+            opacity: 0;
+        }
     }
 }
-@media (min-width: 480){
- .boton-transparente-menu-en{
- margin-top: 0;
- margin-bottom: 4rem;
- height: 8rem;
- width: 8rem;
- display: grid;
- place-items: center;
- font-size: 40px;
- } 
+@media(min-width: 480px){
+    .boton-transparente-menu{
+       
+        margin-bottom: 4rem;
+        height: 8rem;
+        width: 8rem;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 40px;
+        &:hover{
+             background-color: black;   
+             border-bottom: 2px solid rgb(32, 210, 103);
+             color: white;
+             cursor: pointer;
+        }
+    }
+    .boton-transparente-menu-en{
+        margin-bottom: 4rem;
+        display: grid;
+        place-items: center;
+        height: 5rem;
+        width: 100%;
+        border-radius: 0%;
+        color: white;
+        &:hover{
+            background-color: black;   
+            border-bottom: 2px solid rgb(32, 210, 103);
+            color: white;
+            cursor: pointer;
+       }
+        span{
+            opacity: 0;
+        }
+    }
 }
+

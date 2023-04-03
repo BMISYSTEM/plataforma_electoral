@@ -1,0 +1,117 @@
+@media (min-width: 480px){
+    .seccion-dashboard-grafic{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        gap: 1rem;
+        height: 85vh;
+        width: 100%;
+        padding: 2rem;
+    
+        #map{
+            grid-column: 1/2;
+            grid-row: 1/2;
+            // background-color: red;
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            -webkit-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            -moz-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+        }
+        .hombre-mujer{
+            display: grid;
+            place-items: center;
+            grid-column: 2/3;
+            grid-row: 1/2;
+            background-color: rgba(255, 255, 255, 0.371);
+            backdrop-filter: blur(4.0px);
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            -webkit-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            -moz-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+        }
+        .votantes{
+            display: grid;
+            place-items: center;
+            grid-column: 1/2;
+            grid-row: 2/3;
+            background-color: rgba(255, 255, 255, 0.371);
+            backdrop-filter: blur(4.0px);
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            -webkit-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            -moz-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+        }
+        .popularidad-mensual{
+            display: grid;
+            place-items: center;
+            grid-column: 2/3;
+            grid-row: 2/3;
+            background-color: rgba(255, 255, 255, 0.371);
+            backdrop-filter: blur(4.0px);
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            -webkit-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            -moz-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+        }
+    }
+
+}
+@media (max-width: 480px){
+    .seccion-dashboard-grafic{
+        display: grid;
+        grid-template-rows: 25% 25% 25% 25%;
+        gap: 0.5rem;
+        height: 100vh;
+        width: 100%;
+        padding: 2rem;
+    
+        #map{
+            grid-row: 1/2;
+            // background-color: red;
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .hombre-mujer{
+            display: grid;
+            place-items: center;
+            grid-row: 2/3;
+            background-color: rgba(255, 255, 255, 0.371);
+            backdrop-filter: blur(4.0px);
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+        }
+        .votantes{
+            display: grid;
+            place-items: center;
+            grid-row: 3/4;
+            background-color: rgba(255, 255, 255, 0.371);
+            backdrop-filter: blur(4.0px);
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+        }
+        .popularidad-mensual{
+            display: grid;
+            place-items: center;
+            grid-row: 4/5;
+            background-color: rgba(255, 255, 255, 0.371);
+            backdrop-filter: blur(4.0px);
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+
+}

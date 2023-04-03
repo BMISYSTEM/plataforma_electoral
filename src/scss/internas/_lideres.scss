@@ -39,3 +39,26 @@
         }
     }
 }
+
+.ok{
+    background-color: #71b100;
+    color: white;
+    display: block;
+    height: 6rem;
+    width: 100%;
+    font-size: 15px;
+    border-radius: 5px;
+    display: grid;
+    place-items: center;
+}
+.error{
+    background-color: #b10000;
+    color: white;
+    display: block;
+    text-align: center;
+    margin: 2px;
+    height: 3rem;
+    font-size: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+}

@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="build/css/app.css">
     <script src="build/js/jquery.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
     <title>Dashboard</title>
 </head>
 <body id="body" class="body">
@@ -15,33 +21,33 @@
     <div class="dashboard" id="dash">
         <div class="menu-dash" id="barra-lateral">
             <!-- expandir menu -->
-            <div class="boton-transparente-menu" id="menu" onclick="menu()">
-            <i class="fa-sharp fa-solid fa-bars  fa-xs icono-menu"></i>
+            <div class="boton-transparente-menu boton-en" id="menu" onclick="menu()">
+            <img src="imagenes/menu.png" alt="menu hamburguesa" class="icono-menu">
             </div>
             <div class="barra-separador"></div>
             <!-- menu -->
             <div class="boton-transparente" id="opone" onclick="dahss()">
-            <i class="  fa-solid fa-chart-simple icono"></i>
-                <span>Dashboard</span>
+            <img src="imagenes/estadistica.png" alt="dashboard" class="icono-menu-opciones">
+                <span>Estadistica</span>
             </div>
             <div class="boton-transparente" id="opthu" onclick="Formulario_lideres()">
-                <i class="fa-solid fa-users icono"></i>
-                 <span>Usualios Lideres</span>
+                <img src="imagenes/usuarios.png" alt="usuarios-lideres" class="icono-menu-opciones">
+                 <span>Usuarios Lideres</span>
             </div>
-            <div class="boton-transparente" id="optree" onclick="Formulario_puestos()">
+            <!-- <div class="boton-transparente" id="optree" onclick="Formulario_puestos()">
                 <i class="fa-solid fa-check-to-slot icono"></i>
                 <span>Puestos de votacion</span>
-            </div>
+            </div> -->
             <div class="boton-transparente" id="opfor" onclick="Formulario_votantes()">
-                <i class="fa-solid fa-person-booth icono"></i>
+                <img src="imagenes/voto2.png" alt="registro-botantes" class="icono-menu-opciones">
                 <span>Votantes</span>
             </div>
             <div class="opciondark" id="opfor">
             <i class="fa-solid fa-toggle-off dark"  id="claro" onclick="darkmodedash()"></i>
                 <span id="valida"    class="modoclaro">Modo noche</span>
             </div>   
-            <div class="logonav" id="logonav">
-                <img class="icono-menu" id="logmenu" src="imagenes/logo_sebastian1.png" alt="logo de la empresa">
+            <div class="logo-footer" id="logonav">
+                <img class="icono-menu-footer" id="logmenu" src="imagenes/logo_sebastian1.png" alt="logo de la empresa">
             </div>  
         </div>
         <div class="seccion-dashboard">
@@ -69,6 +75,12 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="build/js/mapa.js"></script>
+    <script src="build/js/graficas.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   		crossorigin=""></script> 
     <script src="build/js/bundle.min.js"></script>
 </body>
 </html>
