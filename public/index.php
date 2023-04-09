@@ -7,7 +7,7 @@ use controllers\principal;
 $router = new Router();
 //se define las rutas de aceso y su funcion propiedades
 $router->get('/',[login::class,'login']);
-$router->post('/',[login::class,'login']);
+$router->post('/',[login::class,'logaut']);
 $router->get('/principal',[principal::class,'principal']);
 $router->post('/principal',[principal::class,'insert']);
 $router->get('/formularios',[principal::class,'formulario']);

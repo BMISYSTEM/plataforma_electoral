@@ -20,8 +20,6 @@ class Router{
         //valida que el metodo sea GET y extrae la funcion asociada
         if($metodo === 'GET'){
             $fn =$this->rutasGet[$urlServert] ?? null;
-            
-            
         }else{
             $fn =$this->rutasPost[$urlServert] ?? null;
         }

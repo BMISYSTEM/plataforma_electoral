@@ -1,3 +1,69 @@
+const urlprincipal = "/principal";
+
+const seccion_menu = ($resultado) =>{
+    let div = "";
+    if($resultado === '1'){
+        div = `
+        <div class="boton-transparente" id="opone" onclick="dahss()">
+                    <img src="imagenes/estadistica.png" alt="dashboard" class="icono-menu-opciones">
+                        <span>Estadistica</span>
+                    </div>
+                    <div class="boton-transparente" id="opthu" onclick="Formulario_lideres()">
+                        <img src="imagenes/usuarios.png" alt="usuarios-lideres" class="icono-menu-opciones">
+                         <span>Usuarios Lideres</span>
+                    </div>
+                    <!-- <div class="boton-transparente" id="optree" onclick="Formulario_puestos()">
+                        <i class="fa-solid fa-check-to-slot icono"></i>
+                        <span>Puestos de votacion</span>
+                    </div> -->
+                    <div class="boton-transparente" id="opfor" onclick="Formulario_votantes()">
+                        <img src="imagenes/voto2.png" alt="registro-botantes" class="icono-menu-opciones">
+                        <span>Votantes</span>
+                    </div>`;
+    }else{
+        div = `
+                    <div class="boton-transparente" id="opfor" onclick="Formulario_votantes()">
+                        <img src="imagenes/voto2.png" alt="registro-botantes" class="icono-menu-opciones">
+                        <span>Votantes</span>
+                    </div>`;
+    }
+    $('#seccion-botones').html(div);
+}
+
+
+async function session() {
+    const datos = new FormData();
+    datos.append('tipo','session');
+    try {
+        const url =urlprincipal;
+        const respuesta = await fetch(url,{
+            method: 'POST',
+            body: datos 
+        });
+        const resultado = await respuesta.json();
+        seccion_menu(resultado);
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function darkmode(){
     const preferencias = window.matchMedia('(prefers-color-scheme: dark)');
     //console.log(preferencias.matches); 
@@ -14,12 +80,13 @@ function darkfuncion(){
 }
 
 const abrirModal = ()  => {
+    $('#contenido').html(``);
     let div = ` <div class="over" id="overdiv">
                  <div class="modalaccion">
                  <div class="formularios_acciones">
     <div class="acciones">
-        <div class="boton-acciones-verde" id="opfor" onclick="">
-            <span>Cambiar contraseña</span>
+        <div class="boton-acciones-verde" id="opfor" onclick="actualizardatos()">
+            <span>Actualizar datos</span>
             <i class="fa-solid fa-key"></i>
         </div>
         <div class="boton-acciones-rojo" id="opfor" onclick="Formulario_votantes()">
@@ -34,21 +101,74 @@ const abrirModal = ()  => {
     `;
     $('#modalzoom').html(div);
 }
+//actualizacion de datos personales
+const actualizardatos = ()  => {
+    let titulo = `<p>Actualizacion de datos</p>`;
+    $("#titulos").html(titulo);
+    let div = `<div class="actualizacion-data">
+    <div class="formularios">
+        <form action="" >
+            <div class="formulario secciones">
+                <div class="photo">
+                    <input type="file" id="photos" name="photos" class="photobtn">
+                    <embed id="preview" src="" type="image/png" class="preview" width="100%" height="100%" 
+                    background-color="white" text="cargar foto">
+                </div>
+                <div id="alertas">
+                </div>
+                <div class="tarjetas">
+                    <p>Datos personales</p>
+                    <section >
+                        <label for=""> Nombre</label>
+                        <input type="text" id="nombre" name="nombre">
+                        <label for=""> Apellido</label>
+                        <input type="text" id="apellido" name="apellido">
+                        <label for=""> Cedula</label>
+                        <input type="text" id="cedula" name="cedula">
+                        <label for=""> Fecha de nacimiento</label>
+                        <input type="date" id="data" name="data">
+                </div>
+                <div class="tarjetas">
+                    <p>Datos de contacto</p>
+                    <section>
+                        <label for=""> Correo</label>
+                        <input type="email" id="email" name="email">
+                        <label for=""> Telefono</label>
+                        <input type="" id="telefono" name="telefono">
+                        <label for=""> ciudad</label>
+                        <input type="text" id="ciudad" name="ciudad">
+                        <label for=""> Region</label>
+                        <input type="text" id="region" name="region">
+                        <label for=""> Password</label>
+                        <input type="password" id="password" name="password">
+                    </section>
+                </div>
+            </div>
+            <button type="button" class="boton-linea" onclick="lideres()">Registrar</button>
+            </form>    
+    </div>
+</div>
+
+    `;
+    overdiv.remove();
+    $('#contenido').html(div);
+    cargarfoto();
+}
+const cargarfoto = () =>{
+    document.querySelector("#photos").addEventListener('change',() =>{
+        // console.log("click");
+        let pdf = document.querySelector('#photos').files[0];
+        console.log(pdf)
+        let url = URL.createObjectURL(pdf) ;
+        $('#preview').attr('src',url);
+    });
+}
+
 const exit = () =>{
     overdiv.remove();
 }
 
-const mostrarcontrase = () => {
-    if(document.querySelector("#passwords.contrase")){
-        $('#passwords').attr('type','text');
-        $('#passwords').attr('class','texto');
-        $('#cont').attr('class','fa-solid fa-eye ojocerrado');
-    }else{
-        $('#passwords').attr('type','password');
-        $('#passwords').attr('class','contrase');
-        $('#cont').attr('class','fa-solid fa-eye-slash ojocerrado');
-    }
-}
+
 
 const menu = () =>{
     if(document.querySelector("#dash.dashboard")){
@@ -62,8 +182,12 @@ const menu = () =>{
     }
 }
 const dahss = () =>{
-    let titulo = `<p>Dashboard</p>`;
+    let titulo = `<p>Dashboard</p>
+                    <select name="lideres" id="lideres_seleccion">
+                    <option select>--Seleccione un lider--</option>
+                    </select> `;
     $("#titulos").html(titulo);
+    select_lideres();
     let formulario = "";
     $("#dash").get(0).style.setProperty("background-image", "url(/imagenes/1.png)");
     $("#opone").removeClass("boton-transparente").addClass("boton-seleccion");
@@ -88,6 +212,30 @@ const dahss = () =>{
     mapa();
     cargar();
 }
+async function select_lideres(){
+    const datosf = new FormData();
+    datosf.append('tabla','user');
+    datosf.append('tipo','lideres_select');
+    try {
+        const url = urlprincipal;
+        const localizacion = await fetch(url,{
+            method: 'POST',
+            body: datosf
+        });
+        const puntos = await localizacion.json();
+        console.log(puntos);
+        let options = `<option select>--seleccione--</opction>`;
+        if(length.puntos != 0){
+            puntos.forEach(resultp =>{
+                options += `<option  value="${resultp['id']}">${resultp['nombre']}</option>`;
+            });
+
+            $("#lideres_seleccion").html(options);
+        } 
+    } catch (error) {
+        console.log(error);
+    }
+}
 const Formulario_lideres = () =>{
     let titulo = `<p>Registro de lideres</p>`;
     $("#titulos").html(titulo);
@@ -97,44 +245,52 @@ const Formulario_lideres = () =>{
     $("#opthu").removeClass("boton-transparente").addClass("boton-seleccion");
     $("#optree").removeClass("boton-seleccion").addClass("boton-transparente");
     $("#opfor").removeClass("boton-seleccion").addClass("boton-transparente");
-    formulario = `<div class="formularios">
-    <form action="" >
-        <div class="formulario secciones">
-            <div id="alertas">
-            
+    formulario = `<div class="actualizacion-data">
+    <div class="formularios">
+        <form action="" >
+            <div class="formulario secciones">
+               
+                <div id="alertas">
+                </div>
+                <div class="tarjetas">
+                    <p>Datos personales</p>
+                    <section >
+                        <label for=""> Nombre</label>
+                        <input type="text" id="nombre" name="nombre">
+                        <label for=""> Apellido</label>
+                        <input type="text" id="apellido" name="apellido">
+                        <label for=""> Cedula</label>
+                        <input type="text" id="cedula" name="cedula">
+                        <label for=""> Fecha de nacimiento</label>
+                        <input type="date" id="data" name="data">
+                </div>
+                <div class="tarjetas">
+                    <p>Datos de contacto</p>
+                    <section>
+                        <label for=""> Correo</label>
+                        <input type="email" id="email" name="email">
+                        <label for=""> Telefono</label>
+                        <input type="" id="telefono" name="telefono">
+                        <label for=""> ciudad</label>
+                        <input type="text" id="ciudad" name="ciudad">
+                        <label for=""> Region</label>
+                        <input type="text" id="region" name="region">
+                        <label for=""> Password</label>
+                        <input type="password" id="password" name="password">
+                    </section>
+                </div>
+                <div class="photo">
+                <input type="file" id="photos" name="photos" class="photobtn">
+                <embed id="preview" src="" type="image/png" class="preview" width="100%" height="100%" 
+                background-color="white">
             </div>
-            <div class="tarjetas">
-                <p>Datos personales</p>
-                <section >
-                    <label for=""> Nombre</label>
-                    <input type="text" id="nombre" name="nombre">
-                    <label for=""> Apellido</label>
-                    <input type="text" id="apellido" name="apellido">
-                    <label for=""> Cedula</label>
-                    <input type="text" id="cedula" name="cedula">
-                    <label for=""> Fecha de nacimiento</label>
-                    <input type="date" id="data" name="data">
             </div>
-            <div class="tarjetas">
-                <p>Datos de contacto</p>
-                <section>
-                    <label for=""> Correo</label>
-                    <input type="email" id="email" name="email">
-                    <label for=""> Telefono</label>
-                    <input type="" id="telefono" name="telefono">
-                    <label for=""> ciudad</label>
-                    <input type="text" id="ciudad" name="ciudad">
-                    <label for=""> Region</label>
-                    <input type="text" id="region" name="region">
-                    <label for=""> Password</label>
-                    <input type="password" id="password" name="password">
-                </section>
-            </div>
-        </div>
-        <button type="button" class="boton-linea" onclick="lideres()">Registrar</button>
-        </form>    
+            <button type="button" class="boton-linea" onclick="lideres()">Registrar</button>
+            </form>    
+    </div>
 </div>`;
     $("#contenido").html(formulario);
+    cargarfoto();
 }
 //crea el formulario de los puestos de votaciones
 const Formulario_puestos = () =>{
@@ -179,16 +335,16 @@ const Formulario_votantes = () =>{
     <form action="" >
         <div class="formulario secciones">
             <div class="tarjetas">
-                <p>puesto</p>
+                <p>Votante</p>
                     <section >
-                        <label for="">Ciudad</label>
-                        <input type="text" id="ciudad" name="ciudad">
-                        <label for="">Zona</label>
-                        <input type="text" id="cuadrante" name="cuadrante">
                         <label for="">Nombre</label>
                         <input type="text" id="nombre" name="nombre">
                         <label for="">Apellido</label>
                         <input type="text" id="apellido" name="apellido">
+                        <label for="">Telefono</label>
+                        <input type="text" id="telefono" name="telefono">
+                        <label for="">Correo</label>
+                        <input type="email" id="Correo" name="Correo">
                     </section >
              </div>
             <div class="tarjetas">
@@ -201,7 +357,10 @@ const Formulario_votantes = () =>{
                             <option  value="o">Otro</option>
                         </select>
                         <label for="">Puesto de votacion</label>
-                        <input type="text" id="puesto" name="puesto">
+                        <select name="puestos" id="puestos">
+                        </select>
+                        <label for="">Numero de mesa</label>
+                        <input type="number" id="puesto" name="puesto">
                     </section >
             </div>    
         </div>
@@ -210,7 +369,7 @@ const Formulario_votantes = () =>{
 </div>`;
 
     $("#contenido").html(formulario);
-
+    puestosid();
 }
 const darkmodedash = () =>{
     if(document.querySelector("#valida.modoclaro")){
@@ -220,7 +379,7 @@ const darkmodedash = () =>{
         $('#claro').attr('class','fa-solid fa-toggle-on dark');
         $('#valida').attr('class','modoscuro');
     }else if(document.querySelector("#valida.modoscuro")){
-        $("#barra-lateral").get(0).style.setProperty("background-color", "rgba(36, 111, 136, 0.797)");
+        $("#barra-lateral").get(0).style.setProperty("background-color", "rgba(70, 67, 67, 0.568)");
         $("#contenido").get(0).style.setProperty("background-color", "transparent");
         $("#body").get(0).style.setProperty("background-color", "white");
         $('#claro').attr('class','fa-solid fa-toggle-off dark');
@@ -228,7 +387,32 @@ const darkmodedash = () =>{
     }
 }
 
+//consultas
+async function puestosid() {
+    const datosf = new FormData();
+    datosf.append('tabla','puestosv');
+    datosf.append('tipo','puestosv');
+    try {
+        const url =urlprincipal;
+        const localizacion = await fetch(url,{
+            method: 'POST',
+            body: datosf
+        });
+        const puntos = await localizacion.json();
+        console.log(puntos);
+        let options = `<option select>--seleccione--</opction>`;
+        if(length.puntos != 0){
+            puntos.forEach(resultp =>{
+                options += `<option  value="${resultp['id']}">${resultp['nombre']}</option>`;
+            });
 
+            $("#puestos").html(options);
+        } 
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 //inserts
 
 async function lideres(){
@@ -244,7 +428,7 @@ async function lideres(){
     let region = document.getElementById("region").value;
     let password = document.getElementById("password").value;
 
-    datos.append('insert',"lideres");
+    datos.append('tipo',"lideres");
     datos.append('nombre',nombre);
     datos.append('apellido',apellido);
     datos.append('cedula',cedula);
@@ -256,7 +440,7 @@ async function lideres(){
     datos.append('password',password);
 
     try {
-        const url ='/principal';
+        const url = urlprincipal;
         const respuesta = await fetch(url,{
             method: 'POST',
             body: datos 
@@ -287,11 +471,6 @@ async function lideres(){
     } catch (error) {
         console.log(error);
     }
-
-
-
-
-
 }
 //inserta en la base de datos los puestos
 async function Puestos() {
@@ -303,7 +482,7 @@ async function Puestos() {
     datos.append('cuadrante',cuadrante);
     datos.append('puesto',puesto);
     try {
-        const url ='http://localhost:3000/principal';
+        const url =urlprincipal;
         const respuesta = await fetch(url,{
             method: 'POST',
             body: datos 
@@ -316,3 +495,4 @@ async function Puestos() {
 
 }
 
+session();

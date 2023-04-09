@@ -21,7 +21,7 @@
         background-image: url(/imagenes/1.png);
         background-repeat: no-repeat;
         background-size: cover;
-      
+        
         // barra lateral
       
         .menu-dash{
@@ -31,25 +31,54 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            height: 100vh;
-            background-color: var(--color-menu);
+            height: 97vh;
+            background-color: rgba(70, 67, 67, 0.568);
             backdrop-filter: blur(4.0px);
             border-radius: 10px;
-            margin: 0;
+            margin: 1rem;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
             overflow: hidden;
-            
+            .seccion-botones{
+                width: 100%;
+            }
+            .icono-menu{
+                font-size: 3rem;
+                height: 3rem;
+                margin: 0 auto;
+                width: 4rem;
+                
+                padding: 1px;
+                &:hover{
+                    
+                    border-bottom: 2px solid rgb(32, 210, 103);
+                    color: white;
+                    cursor: pointer;
+                }
+            }
             .dash{
                 grid-row: 2/3;
             }
+            .opciondark{
+                margin-top: 5rem;
+                display: grid;
+                place-items: center;
+
+               i{
+                    font-size: 30px;
+                    color: white;
+               }
+           
+             }
             .logo-footer{
+                margin-top: 2rem;
                 width: 100%;
                 height: 10rem;
                 display: block;
                 .icono-menu-footer{
-                    height: 7rem;
-                    width: 7rem;
+                    height: 5rem;
+                    width: 5rem;
                     margin: 0 auto;
+                    display: none;
                 }
             }
         }
@@ -108,12 +137,6 @@
         font-size: 2rem;
         margin: 1rem;
     }
-    .icono-menu{
-        font-size: 2rem;
-        height: 2rem;
-        margin: 0 auto;
-        width: 3rem;
-    }
     .barra-separador{
         width: 100%;
         border-bottom: 3px solid rgba(255, 255, 255, 0.211);
@@ -144,12 +167,26 @@
             display: flex;
             flex-direction: column;
             width: 6rem;
-            height:100vh;
-            background-color: var(--color-menu); 
+            height:97vh;
+            background-color: rgba(70, 67, 67, 0.568); 
             backdrop-filter: blur(4.0px);
             border-radius: 10px;
-            margin: 0;
+            margin: 1rem;
             overflow: hidden;
+            .icono-menu{
+                font-size: 3rem;
+                height: 3rem;
+                margin: 0 auto;
+                width: 4rem;
+                
+                padding: 1px;
+                &:hover{
+                    
+                    border-bottom: 2px solid rgb(32, 210, 103);
+                    color: white;
+                    cursor: pointer;
+                }
+            }
             .dash{
                 grid-row: 2/3;
             }
@@ -168,7 +205,19 @@
                     height: 5rem;
                     width: 5rem;
                     margin: 0 auto;
+                    display: none;
                 }
+            }
+            .opciondark{
+                    margin-top: 5rem;
+                    display: grid;
+                    place-items: center;
+
+                   i{
+                        font-size: 30px;
+                        color: white;
+                   }
+               
             }
         }
         //panel lateral
@@ -226,6 +275,22 @@
     .titulos{
         grid-column: 1/2;
         font-size: 5px;
+        display: flex;
+        justify-content: space-between;
+        select{
+            margin-right: 30%;
+            width: 20rem;
+            height: 3rem;
+            font-size: 12px;
+            border-radius: 10px;
+            border: none;
+            background-color: white;
+            text-align: center;
+            &:hover{
+                cursor: pointer;
+                border-bottom:2px solid rgb(32, 210, 103) ;
+            }
+        }
         p{
             color: rgb(46, 42, 42);
     
@@ -248,24 +313,8 @@
         background-color: black;
         cursor: pointer;
     }
-    .dark{
-        margin-top: 10rem;
-        margin-left: 1rem;
-        margin-right: 2rem;
-        font-size: 30px;
-        display: flex;
-        justify-content: space-between;
-        color: white;
-        &:hover{
-            color: red;
-        }
-    }
-    .opciondark{
-        span{
-        color: rgb(46, 42, 42);
-            
-        }
-    }
+
+
     .logonav{
         width: 100%;
         display: block;
@@ -290,7 +339,7 @@
             grid-row: 1/2;
             width: 100%;
             height: 100%;
-            background-color: var(--color-menu);
+            background-color: rgba(70, 67, 67, 0.568);
             backdrop-filter: blur(4.0px);
             display: flex;
             flex-direction: column;
@@ -298,7 +347,10 @@
             overflow: hidden;
             text-align: center;
             align-items: center;
-            padding-top: 1rem;
+            padding-top: 0rem;
+            #seccion-botones{
+                width: 100%;
+            }
             .logonav{
                 margin: 0 auto;
                 height: 10rem;
@@ -340,7 +392,7 @@
             grid-row: 1/2;
             width: 100%;
             height: 100%;
-            background-color: var(--color-menu);
+            background-color: rgba(70, 67, 67, 0.568);
             backdrop-filter: blur(4.0px);
             display: flex;
             flex-direction: column;
@@ -348,7 +400,10 @@
             overflow: hidden;
             text-align: center;
             align-items: center;
-            padding-top: 1rem;
+            padding-top: 0;
+            #seccion-botones{
+                width: 100%;
+            }
             .logonav{
                 margin: 0 auto;
                 height: 5rem;
@@ -376,11 +431,15 @@
             }
         }
     }
-    .icono-menu{
+  
+    .icono-menu-footer{
         font-size: 2rem;
         height: 3rem;
         margin: 0 auto;
         width: 3rem;
+        display: none;
+    }
       
     }
-}
+
+    

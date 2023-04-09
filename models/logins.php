@@ -1,6 +1,8 @@
 <?php 
 namespace model;
 
+use GuzzleHttp\Psr7\Query;
+
 class logins extends ActiveRecord{
     protected static $tabla = 'usuarios';
     protected static $columbnasdb = ['id','email','pasword'];
@@ -8,10 +10,14 @@ class logins extends ActiveRecord{
     public $id;
     public $email;
     public $pasword;
+    public $nombre;
+    public $rol;
     public function __construct($arg = []){
         $this->id = $arg['id'] ?? null;
         $this->email = $arg['email'] ?? '';
         $this->pasword = $arg['pasword'] ?? '';
+        $this->nombre = $arg['nombre'] ?? '';
+        $this->rol = $arg['rol'] ?? '';
     }
     public function validar(){
         if(!$this->email){
@@ -43,11 +49,28 @@ class logins extends ActiveRecord{
         return  $autenticado;
     }
     public function autenticado(){
-        session_start();
-        $_SESSION['usuario'] = $this->email;
-        $_SESSION['login'] = true;
+       
+    }
+    public function comprobarCorreo(){
+        $email = $this->email;
+        $query = "select email FROM usuarios where email = '". $email ."'";
+        $result = self::$db->query($query);
+        if(!$result->num_rows){
+            return "1";
+        }else{
+            return "2";
+        }
+    }
 
-        header('location: /principal');
+    public static function seleccion_lideres(){
+        $querys = "select id,nombre,rol from usuarios";
+        $resultado = self::consultaSql($querys);
+        return $resultado;
+    }
+    public static function roles($email){
+        $querys = "select rol from usuarios where email ='". $email ."' LIMIT 1;";
+        $resultado = self::consultaSql($querys);
+        return $resultado;
     }
 }
     

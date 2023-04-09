@@ -25,16 +25,16 @@
             <?php }?>
             <form method="POST" class="formulario" action="/">
                 <label for="">Usuario</label>
-                <input type="text" placeholder="Usuario" required name="email">
+                <input type="text" placeholder="Usuario" required name="email" id="user">
                 <p  ></p>
                 
                 <label for="">Constraseña</label>
                 <div class="ojos" onclick="mostrarcontrase()" id="ojos">
                 <i class="fa-solid fa-eye-slash ojocerrado" id="cont"></i>
                 </div>
-                <input type="password" required name="pasword" id="passwords" class="contrase">
-                <p  onclick="abrirModal()">Olvido su Contraseña?</p>
-                <input type="submit" value="Ingresar" class="boton-inline" >
+                <input type="password" required name="pasword" id="password" class="contrase">
+                    <p  onclick="olvidepass()">Olvido su Contraseña?</p>
+                <button type="button" class="boton-inline" onclick="logi()">Registrar</button>
             </form>
         </div>
     </div>

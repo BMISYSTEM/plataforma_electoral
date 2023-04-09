@@ -17,6 +17,7 @@
     <title>Dashboard</title>
 </head>
 <body id="body" class="body">
+    <div id="actualizardatos"></div>
     <div id="modalzoom"></div>
     <div class="dashboard" id="dash">
         <div class="menu-dash" id="barra-lateral">
@@ -26,24 +27,11 @@
             </div>
             <div class="barra-separador"></div>
             <!-- menu -->
-            <div class="boton-transparente" id="opone" onclick="dahss()">
-            <img src="imagenes/estadistica.png" alt="dashboard" class="icono-menu-opciones">
-                <span>Estadistica</span>
-            </div>
-            <div class="boton-transparente" id="opthu" onclick="Formulario_lideres()">
-                <img src="imagenes/usuarios.png" alt="usuarios-lideres" class="icono-menu-opciones">
-                 <span>Usuarios Lideres</span>
-            </div>
-            <!-- <div class="boton-transparente" id="optree" onclick="Formulario_puestos()">
-                <i class="fa-solid fa-check-to-slot icono"></i>
-                <span>Puestos de votacion</span>
-            </div> -->
-            <div class="boton-transparente" id="opfor" onclick="Formulario_votantes()">
-                <img src="imagenes/voto2.png" alt="registro-botantes" class="icono-menu-opciones">
-                <span>Votantes</span>
+            <div id="seccion-botones">
+                
             </div>
             <div class="opciondark" id="opfor">
-            <i class="fa-solid fa-toggle-off dark"  id="claro" onclick="darkmodedash()"></i>
+                <i class="fa-solid fa-toggle-off dark"  id="claro" onclick="darkmodedash()"></i>
                 <span id="valida"    class="modoclaro">Modo noche</span>
             </div>   
             <div class="logo-footer" id="logonav">
@@ -57,7 +45,6 @@
                 </div>
                 <div class="opciones">
                     <span class="session">
-                        
                         <?php echo $_SESSION['usuario']?>
                     </span>
                     <div id="foto" class="foto-redonda" onclick="abrirModal()">
