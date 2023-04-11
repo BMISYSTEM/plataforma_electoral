@@ -11,6 +11,9 @@ class Router{
         $this->rutasPost[$url] = $fn;
     }
     public function comprobar_rutas(){
+        session_start();
+        $aut = $_SESSION['login'];
+        $rutas_protegidas = ['/principal'];
         // valida la ruta a la cual se esta ingresando
         $urlServert = $_SERVER['PATH_INFO'] ?? '/';
         
@@ -22,6 +25,9 @@ class Router{
             $fn =$this->rutasGet[$urlServert] ?? null;
         }else{
             $fn =$this->rutasPost[$urlServert] ?? null;
+        }
+        if(in_array($urlServert,$rutas_protegidas) && !$aut){
+            header('Location: /');
         }
         if($fn){
             call_user_func($fn,$this);

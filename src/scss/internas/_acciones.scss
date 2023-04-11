@@ -26,6 +26,7 @@
             &:hover{
                 background-color: rgb(5, 85, 5);
                 border-bottom: 3px solid rgb(60, 222, 157);
+                cursor: pointer;
             }
         }
         .boton-acciones-rojo{
@@ -44,6 +45,7 @@
             &:hover{
                 background-color: rgb(148, 9, 9);
                 border-bottom: 3px solid rgb(60, 187, 222);
+                cursor: pointer;
             }
         }
     }

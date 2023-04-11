@@ -6,6 +6,7 @@
 }
 .boton-inline{
     @include botones($verde,inline-block);
+    margin-top: 2rem;
     a{
         color: $blanco;
     }

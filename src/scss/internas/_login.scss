@@ -29,8 +29,8 @@ body{
        
         .login{
             //  grid-column: 2/3;
-            background-color: rgba(145, 196, 241, 0.336);
-            backdrop-filter: blur(4.0px);
+            background-color: transparent;
+            backdrop-filter: blur(20px);
             border-radius: 2%;
             height: 100%;
             width: 100%;
@@ -129,7 +129,7 @@ body{
                .login{
                    //  grid-column: 2/3;
                    background-color: rgba(145, 196, 241, 0.336);
-                   backdrop-filter: blur(4.0px);
+                   backdrop-filter: blur(20px);
                    border-radius: 2%;
                    height: 70%;
                    width: 30%;

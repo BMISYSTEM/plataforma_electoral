@@ -33,7 +33,7 @@
             width: 100%;
             height: 97vh;
             background-color: rgba(70, 67, 67, 0.568);
-            backdrop-filter: blur(4.0px);
+            backdrop-filter: blur(20px);
             border-radius: 10px;
             margin: 1rem;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
@@ -102,6 +102,11 @@
                 grid-row:1/2;
                 background-color: rgba(255, 255, 255, 0);
                 //box-shadow: 0 4px 8px 0 rgba(47, 46, 46, 0.563), 0 6px 20px 0 rgba(0, 0, 0, 0);
+                .fotodesession{
+                    background-image: url(/imagenes/1.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
             }
             //div contenido aca cambia segun las pantallas
             .content-dashboard{
@@ -111,7 +116,7 @@
                 margin-right: 3px;
                 border-radius: 5px;
                 grid-row: 2/3;
-                background-color: var(--color-div-contenido);
+                background-color: var(--color-div-contenido); 
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0);
                 overflow: auto;
             }
@@ -169,7 +174,7 @@
             width: 6rem;
             height:97vh;
             background-color: rgba(70, 67, 67, 0.568); 
-            backdrop-filter: blur(4.0px);
+            backdrop-filter: blur(20px);
             border-radius: 10px;
             margin: 1rem;
             overflow: hidden;
@@ -312,9 +317,9 @@
         margin-right: 1rem;
         background-color: black;
         cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
-
-
     .logonav{
         width: 100%;
         display: block;

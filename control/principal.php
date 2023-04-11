@@ -2,9 +2,12 @@
 namespace controllers;
 
 use Error;
+use Intervention\Image\Gd\Commands\BrightnessCommand;
+use LDAP\Result;
 use Router\Router;
 use model\lideres;
 use model\logins;
+use model\puestos;
 use model\votantes;
 
 class principal{
@@ -24,6 +27,12 @@ class principal{
 
             switch ($tipo) {
                 case 'lideres':
+                    // echo json_encode($_FILES['foto']);
+                    $nomarchivo = md5(uniqid(rand(),true)) . '.jpg';
+                    $ruta = '../public/build/img/';
+                    $img = $ruta. $nomarchivo;
+                    $result = @move_uploaded_file($_FILES['foto']['tmp_name'],$img);
+                    echo json_encode('se guardo de forma correcta');
                     $arr = [
                         'nombre' => $_POST['nombre'],
                         'apellido' => $_POST['apellido'],
@@ -33,7 +42,8 @@ class principal{
                         'telefono' => $_POST['telefono'],
                         'ciudad' => $_POST['ciudad'],
                         'region' => $_POST['region'],
-                        'password' => $_POST['password']
+                        'password' => $_POST['password'],
+                        'foto' => $nomarchivo
                     ];
                     $lideres = new lideres($arr);
                     $error = $lideres->validar();
@@ -74,11 +84,11 @@ class principal{
                     }
                     break;
                 case 'puestosv':
-                    $result = votantes::puestos_votacion();
+                    $result = puestos::puestos_votacion();
                     echo json_encode($result);
                     break;
                 case 'puestosmapa':
-                    $result = votantes::puestos_votacion_mapa();
+                    $result = puestos::puestos_votacion_mapa();
                     echo json_encode($result);
                     break;
                 case 'lideres_select':
@@ -88,6 +98,68 @@ class principal{
                 case 'session':
                     session_start();
                     echo json_encode($_SESSION['rol'][0]->rol);
+                    break;
+                case 'fotosession':
+                    session_start();
+                    $arr= [
+                        'email' => $_SESSION['usuario']
+                    ];
+                    $foto = new lideres($arr);
+                    $resul = $foto->foto();
+                    echo json_encode($resul);
+                    break;
+                case 'insertarvotantes':
+                    $votante = new votantes($_POST);
+                    $result = $votante->insertar_votante();
+                    echo json_encode($result);
+                    break;
+                case 'mesas':
+                    $mesas = new votantes($_POST);
+                    $result = $mesas->mesas();
+                    echo json_encode($result);
+                    break;
+                case 'actualizar':
+                    session_start();
+                    $arg = [
+                        'email' => $_SESSION['usuario']
+                    ];
+                    $usuario = new lideres($arg);
+                    $result = $usuario->usuario_activo();
+                    echo json_encode($result);
+                    break;
+                case 'update_lideres':
+                    $pass = password_hash($_POST['password'],PASSWORD_BCRYPT);
+                    $nomarchivo = md5(uniqid(rand(),true)) . '.jpg';
+                    $ruta = '../public/build/img/';
+                    $img = $ruta. $nomarchivo;
+                    $result = @move_uploaded_file($_FILES['foto']['tmp_name'],$img);
+                    $arg = [
+                        'id' => $_POST['id'],
+                        'email' => $_POST['email'],
+                        'password' => $pass,
+                        'nombre' => $_POST['nombre'],
+                        'apellido' => $_POST['apellido'],
+                        'apellido' => $_POST['apellido'],
+                        'cedula' => $_POST['cedula'],
+                        'fechanacimiento' => $_POST['fechanacimiento'],
+                        'telefono' => $_POST['telefono'],
+                        'ciudad' => $_POST['ciudad'],
+                        'region' => $_POST['region'],
+                        'foto' => $nomarchivo,
+                    ];
+                    $update = new lideres($arg);
+                    $result = $update->update();
+                    echo json_encode($result);
+                    break;
+                case 'cerrar':
+                    session_start();
+                    $_SESSION = [];
+                    $result = true;
+                    echo  json_decode($result) ;
+                    break;
+                case 'allcalor':
+                    $result = puestos::allcalor();
+                    echo json_encode($result);
                     break;
                 }
        }

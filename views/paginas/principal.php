@@ -48,7 +48,7 @@
                         <?php echo $_SESSION['usuario']?>
                     </span>
                     <div id="foto" class="foto-redonda" onclick="abrirModal()">
-                        <img src="" alt="" >
+                        <img src="" alt="" id="fotosession" class="foto-redonda">
                     </div>
                 </div>
                     
