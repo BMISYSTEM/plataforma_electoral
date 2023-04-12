@@ -11,6 +11,9 @@ ADD COLUMN `region` VARCHAR(45) NOT NULL AFTER `ciudad`,
 
 SELECT p.latitude,p.longitude,v.puesto_id, count(v.puesto_id) as amplitud from votantes as v inner join puestosv as p on p.id = v.puesto_id GROUP BY v.puesto_id
 
+
+
+SELECT p.latitude,p.longitude,p.nombre,v.puesto_id, count(v.puesto_id) as amplitud, count(if(v.genero = 'm',1,null) ) as maculino, count(if(v.genero = 'f',1,null) ) as femenino from votantes as v inner join puestosv as p on p.id = v.puesto_id GROUP BY v.puesto_id
 //tabla de puesto
 CREATE TABLE `plataforma_electoral`.`puestos` (
     `id` INT NOT NULL AUTO_INCREMENT,

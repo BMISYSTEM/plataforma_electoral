@@ -1,23 +1,48 @@
 
 .formularios_acciones{
-    z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
-    background-color: rgba(36, 111, 136, 0.797);
-    backdrop-filter: blur(4.0px);
-    display: grid;
-    place-items: center;
-    height: 50vh;
-    width: 50vh;
+    backdrop-filter: blur(20px);
+    background-color: white;
     border-radius: 8px;
+    display: grid;
+    height: 50vh;
     overflow: auto;
+    place-items: center;
+      align-items: center;
+    width: 50vh;
+    z-index: 9999999999999999999;
+    align-items: center;
+    text-align: center;
+    label{
+        
+    }
     .acciones{
        width: 50%;
+       button, input, optgroup, select, textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+        border-radius: 10px;
+        width: 100%;
+        border: none;
+        outline: none;
+        padding-right: 3px;
+        text-align: center;
+        // background-color: rgb(134, 151, 151);
+        border-bottom: 3px solid rgb(60, 222, 157);
+        text-decoration: none;
+      }
+      input:focus{
+        border-bottom: 3px solid rgb(104, 192, 160);
+        color: rgb(81, 78, 78);
+    }
         .boton-acciones-verde{
             background-color: green;
             border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
+            color: #fff;
             padding: 2px;
-            color: white;
+            width: 100%;
+            margin-top: 2rem;
             span,i{
                 padding: 0;
                 display: grid;

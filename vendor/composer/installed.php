@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'bairo/ecomerce_mvc',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'f05423496c3b58f8fefecccd159f8a21bd47c1af',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'bairo/ecomerce_mvc' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'f05423496c3b58f8fefecccd159f8a21bd47c1af',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

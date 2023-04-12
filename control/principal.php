@@ -161,6 +161,33 @@ class principal{
                     $result = puestos::allcalor();
                     echo json_encode($result);
                     break;
+                case 'filtro_lider':
+                    $lider = new puestos($_POST);
+                    $result = $lider->lider_mapa();
+                    echo json_encode($result);
+                    break;
+                case 'hombre_mujer_otro':
+                    $result = puestos::allgenero();
+                    echo json_encode($result);
+                    break;
+                case 'filtro_lider_genero':
+                    $lider = new puestos($_POST);
+                    $result = $lider->filtro_genero();
+                    echo json_encode($result);
+                    break;
+                case 'puestos_estadistica':
+                    $result = puestos::allpuestos_estadistica();
+                    echo json_encode($result);
+                    break;
+                case 'filtro_puestos':
+                    $lider = new puestos($_POST);
+                    $result = $lider->filtro_puestos();
+                    echo json_encode($result);
+                    break;
+                case 'lideres_tabla':
+                    $result = puestos::lideres_tabla();
+                    echo json_encode($result);
+                    break;
                 }
        }
     } 

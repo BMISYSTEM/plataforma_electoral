@@ -72,6 +72,11 @@ class logins extends ActiveRecord{
         $resultado = self::consultaSql($querys);
         return $resultado;
     }
+    public  function insert_code($code){
+        $querys = "update usuarios set code = '$code' where email = '$this->email'";
+        $resultado = self::$db->query($querys);
+        return $resultado;
+    }
 }
     
 ?>

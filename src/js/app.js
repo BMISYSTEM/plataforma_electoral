@@ -264,7 +264,7 @@ const menu = () =>{
 //crea el dasboard
 const dahss = () =>{
     let titulo = `<p>Dashboard</p>
-                    <select name="lideres" id="lideres_seleccion">
+                    <select name="lideres" id="lideres_seleccion" onchange="filtro_lider()">
                     <option select>--Seleccione un lider--</option>
                     </select> `;
     $("#titulos").html(titulo);
@@ -276,7 +276,7 @@ const dahss = () =>{
     $("#optree").removeClass("boton-seleccion").addClass("boton-transparente");
     $("#opfor").removeClass("boton-seleccion").addClass("boton-transparente");
     formulario =`
-    <div class="seccion-dashboard-grafic">
+    <div class="seccion-dashboard-grafic" id="seccion-dashboard-grafic">
     <div class="contenedor_mapa" id="mapas">
     <div class="opciones">
         <div class="opcion-mapa" id="opthu" onclick="mapa_sin()"><img src="build/img/marcador.png" class="icono-mapa"></div>
@@ -287,20 +287,276 @@ const dahss = () =>{
     <div id="mapa_sin" class="mapacero"></div>
     </div>
     <div class="hombre-mujer">
-        <canvas id="myChart"></canvas>
+        
     </div>
-    <div class="votantes">
-    <canvas id="rodaja"></canvas>
+    <div class="votantes" id="votantes">
+  
     </div>
     <div class="popularidad-mensual">
-        <canvas id="popularidad"></canvas>
+        <canvas id="myChart"></canvas>
+        
+    </div>
+    <div id="lista_Lideres" class="lista_lideres">
+    <table class="tabla_lideres">
+    <thead>
+            <th>Nombre</th>
+            <th>Votos M</th>
+            <th>Votos F</th>
+            <th>Votos O</th>
+            <th>Total</th>
+            <th>Inavilitar</th>
+        </thead>
+        <tbody id="filas_lideres">
+        <tr >
+        </tr>
+        </tbody>
     </div>
     </div>
     `
     $("#contenido").html(formulario);
     mapa();
     cargar();
+    hombre_mujer_otro();
+    table_lideres();
 }
+//consulta las estadisticas de todos los lideres
+const table_lideres = () =>{
+    table_lideres_();
+    async function table_lideres_() {
+        const datos = new FormData();
+        datos.append('tipo','lideres_tabla');
+        try {
+            const url =urlprincipal;
+            const respuesta = await fetch(url,{
+                method: 'POST',
+                body: datos 
+            });
+            const resultado = await respuesta.json();
+            console.log(resultado);
+            let html = '';
+            resultado.forEach(lideres =>{
+                console.log(lideres);
+                html += `
+                <tr>
+                <td>${lideres['0']}</td>
+                <td>${lideres['2']}</td>
+                <td>${lideres['3']}</td>
+                <td>${lideres['4']}</td>
+                <td>${lideres['1']}</td>
+                <tr>
+                `;
+            });
+            $('#filas_lideres').html(html);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+//stadisticas hombre mujer otro
+const hombre_mujer_otro = () =>{
+    hombre_mujer_otro_consult();
+    async function hombre_mujer_otro_consult() {
+        const datos = new FormData();
+        datos.append('tipo','hombre_mujer_otro');
+        try {
+            const url =urlprincipal;
+            const respuesta = await fetch(url,{
+                method: 'POST',
+                body: datos 
+            });
+            const resultado = await respuesta.json();
+            console.log(resultado);
+            $('#votantes').html(`
+            <p class="titulo">Votantes por genero</p>
+            <div class="votos">
+                <div class="hombre">
+                <span>Masculino</span>
+                <img src="build/img/hombre.png" class="icono-hombre">
+                <span>${resultado[0]['masculino']}</span>
+                </div>
+                <div class="mujer">
+                <span>Femenino</span>
+                <img src="build/img/mujer.png" class="icono-hombre">
+                <span>${resultado[0]['femenino']}</span>
+                </div>
+                <div class="otros">
+                <span>Otros</span>
+                <img src="build/img/otro.png" class="icono-hombre">
+                <span>${resultado[0]['otros']}</span>
+                </div>
+            </div>
+            `);
+        } catch (error) {
+            console.log(error);
+        }
+    
+    }
+}
+//filtro del dashboard
+const filtro_lider = () => {
+    let valor = document.getElementById("lideres_seleccion").value;
+    console.log(valor);
+    if(valor != 0){
+        $('#map').remove();
+        $('#mapas').append('<div id="map" class="map"></div>');
+        let map = L.map('map').setView([3.4137353508661232, -76.46891672594022],10)
+        //Agregar tilelAyer mapa base desde openstreetmap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        filtro();
+    
+        async function filtro() {
+            const datos = new FormData();
+            let lider = document.getElementById("lideres_seleccion").value;
+            datos.append('tipo','filtro_lider');
+            datos.append('id',lider);
+            try {
+                const url =urlprincipal;
+                const respuesta = await fetch(url,{
+                    method: 'POST',
+                    body: datos 
+                });
+                const resultado = await respuesta.json();
+              //   console.log(resultado);
+                if(length.resultado != 0){
+                    var $COLORES = ['#0000FF','#002AFF','#0055FF','#0080FF','#00AAFF','#00D5FF','#00FFFF','#00FFD5','#00FFAA','#00FF80','#00FF55','#00FF2A','#00FF00',
+                                    '#2BFF00','#55FF00','#80FF00','#AAFF00','#D4FF00','#FFFF00','#FFD500','#FFAA00','#FF8000','#FF5500','#FF2A00','#FF0000'];
+                                    let j = 1;
+                  for (var i = 0; i < 25; i++) {
+                  resultado.forEach(result =>{
+                        //secuencia
+                        let amplitud = result['amplitud'] * 25
+                        let factor = amplitud/25;
+                          if(i <= amplitud){
+                              L.circle([result['longitude'],result['latitude']],
+                              {
+                                fillColor:$COLORES[i],
+                                fillOpacity:((i)/100),
+                                stroke: false,
+                                radius: amplitud - (factor * (i+1) ),
+                                alt: result['nombre']}).addTo(map) 
+                                .bindPopup(result['nombre'] + ' hombres =' + result['masculino'] + '/ mujeres = ' + result['femenino']+ '/ Otros = ' + result['otros']); 
+                          }
+                          }); 
+                        }
+                } 
+            } catch (error) {
+                console.log(error);
+            }
+        
+        }
+    
+        //hombre mujer y otros
+        hombre_mujer_otro_();
+        $('#votantes').remove();
+        $('#seccion-dashboard-grafic').append('<div class="votantes" id="votantes"></div>');
+        async function hombre_mujer_otro_() {
+            const datos = new FormData();
+            let lider = document.getElementById("lideres_seleccion").value;
+            datos.append('tipo','filtro_lider_genero');
+            datos.append('id',lider);
+            try {
+                const url =urlprincipal;
+                const respuesta = await fetch(url,{
+                    method: 'POST',
+                    body: datos 
+                });
+                const resultado = await respuesta.json();
+                console.log(resultado);
+                $('#votantes').html(`
+                <p class="titulo">Votantes por genero</p>
+                <div class="votos">
+                    <div class="hombre">
+                    <span>Masculino</span>
+                    <img src="build/img/hombre.png" class="icono-hombre">
+                    <span>${resultado[0]['masculino']}</span>
+                    </div>
+                    <div class="mujer">
+                    <span>Femenino</span>
+                    <img src="build/img/mujer.png" class="icono-hombre">
+                    <span>${resultado[0]['femenino']}</span>
+                    </div>
+                    <div class="otros">
+                    <span>Otros</span>
+                    <img src="build/img/otro.png" class="icono-hombre">
+                    <span>${resultado[0]['otros']}</span>
+                    </div>
+                </div>
+                `);
+            } catch (error) {
+                console.log(error);
+            }
+        
+        }
+    
+    
+        //filtra las estadisticas de los puestos
+        $('#myChart').remove();
+        $('.popularidad-mensual').append('<canvas id="myChart"></canvas>');
+        const ctx = document.getElementById('myChart');
+        //consulta de todos los puestos
+        estadistica_puestos();
+        async function estadistica_puestos() {
+          const datos = new FormData();
+          let lider = document.getElementById("lideres_seleccion").value;
+          datos.append('tipo','filtro_puestos');
+          datos.append('id',lider);
+          try {
+              const url =urlprincipal;
+              const respuesta = await fetch(url,{
+                  method: 'POST',
+                  body: datos 
+              });
+              const resultado = await respuesta.json();
+              let nombresar = [];
+              let votos = [];
+              resultado.forEach(nombres => {
+                nombresar.push(nombres[0]);
+                votos.push(nombres[1]);
+              });
+              // console.log(nombresar);
+              // console.log(votos);
+              // console.log(votos);
+              new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: nombresar,
+                  datasets: [{
+                    label: '# of Votes',
+                    data: votos,
+                    backgroundColor: [
+                        'rgba(36, 27, 217, 0.2)',
+                        'rgba(217, 27, 173, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(36, 27, 217, 1)',
+                        'rgba(217, 27, 173, 1)',
+                    ],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  indexAxis: 'y',
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }
+              });
+            } catch (error) {
+              console.log(error);
+          }
+      
+      }  
+    }else{
+        calor();
+        cargar();
+        hombre_mujer_otro();
+    }
+}
+//mapa de calor
 const calor = () =>{
     $('#map').remove();
     $('#mapas').append('<div id="map" class="map"></div>');
@@ -327,7 +583,6 @@ const calor = () =>{
                               '#2BFF00','#55FF00','#80FF00','#AAFF00','#D4FF00','#FFFF00','#FFD500','#FFAA00','#FF8000','#FF5500','#FF2A00','#FF0000'];
                               let j = 1;
             for (var i = 0; i < 25; i++) {
-
             resultado.forEach(result =>{
                   //secuencia
                   let amplitud = result['amplitud'] * 25
@@ -340,7 +595,7 @@ const calor = () =>{
                           stroke: false,
                           radius: amplitud - (factor * (i+1) ),
                           alt: result['nombre']}).addTo(map) 
-                        .bindPopup(result['nombre']); 
+                        .bindPopup(result['nombre'] + ' hombres =' + result['masculino'] + '/ mujeres = ' + result['femenino']+ '/ Otros = ' + result['otros']); 
                     }
                     }); 
                   }
@@ -399,7 +654,7 @@ async function select_lideres(){
         });
         const puntos = await localizacion.json();
         console.log(puntos);
-        let options = `<option select>--seleccione--</opction>`;
+        let options = `<option value="0" select>--seleccione--</opction>`;
         if(length.puntos != 0){
             puntos.forEach(resultp =>{
                 options += `<option  value="${resultp['id']}">${resultp['nombre']}</option>`;

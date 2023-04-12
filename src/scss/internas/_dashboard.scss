@@ -353,6 +353,7 @@
             text-align: center;
             align-items: center;
             padding-top: 0rem;
+
             #seccion-botones{
                 width: 100%;
             }
@@ -365,12 +366,37 @@
         .seccion-dashboard{
             grid-row: 2/3;
             display: grid;
-            grid-template-rows: 5% 90% 5%;
+            grid-template-rows: 20% 75% 5%;
             height: 90vh;
             width: 100%;
             .header-dashboard{
                 grid-row: 1/2;
                 border-bottom: 1px solid rgb(82, 77, 77);
+                display: grid;
+                grid-template-rows: 50% 50%;
+                .titulos{
+                    grid-row: 2/3;
+                   display: grid;
+                   place-items: center;
+                   select{
+                     border: none;
+                     background-color: transparent;
+                     margin-bottom: 5px;
+                     margin-top: 5px;
+                     border-radius: 10px;
+                     border-bottom: 2px solid rgb(32, 210, 103);
+                     text-align: center;
+                   }
+                }
+               .opciones{
+
+                grid-row: 1/2;
+                .foto-redonda{
+                   
+                    height: 3rem;
+                    width: 3rem;
+                }
+               }
             }
             .content-dashboard{
                 grid-row: 2/3;
@@ -392,7 +418,8 @@
         background-image: url(/imagenes/1.png);
         background-repeat: no-repeat;
         background-size: cover;
-        overflow: hidden;
+       
+        
         .menu-dash{
             grid-row: 1/2;
             width: 100%;
@@ -406,6 +433,7 @@
             text-align: center;
             align-items: center;
             padding-top: 0;
+            overflow: auto;
             #seccion-botones{
                 width: 100%;
             }
@@ -423,9 +451,35 @@
             height: 100%;
             width: 100%;
             .header-dashboard{
-                grid-row: 1/2;
-                border-bottom: 1px solid rgb(82, 77, 77);
-            }
+                    grid-row: 1/2;
+                    border-bottom: 1px solid rgb(82, 77, 77);
+                    display: grid;
+                    grid-template-rows: 50% 50%;
+                    .titulos{
+                        grid-row: 2/3;
+                       display: grid;
+                       place-items: center;
+                       select{
+                         border: none;
+                         background-color: transparent;
+                         margin-bottom: 5px;
+                         margin-top: 5px;
+                         border-radius: 10px;
+                         border-bottom: 2px solid rgb(32, 210, 103);
+                         text-align: center;
+                       }
+                    }
+                   .opciones{
+    
+                    grid-row: 1/2;
+                    .foto-redonda{
+                       
+                        height: 3rem;
+                        width: 3rem;
+                    }
+                   }
+                }
+            
             .content-dashboard{
                 grid-row: 2/3;
                 overflow: hidden;
