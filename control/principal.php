@@ -188,6 +188,19 @@ class principal{
                     $result = puestos::lideres_tabla();
                     echo json_encode($result);
                     break;
+                case 'tabla_votos':
+                    session_start();
+                    $email = $_SESSION['usuario'];
+                    $result = puestos::allvotos($email);
+                    echo json_encode($result);
+                    break;
+                case 'registrar_meta':
+                    $result = puestos::registro_meta($_POST['meta']);
+                    echo json_encode($result);
+                    break;
+                case 'allmeta':
+                    $result = puestos::allmeta();
+                    echo json_encode($result);
                 }
        }
     } 

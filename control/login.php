@@ -98,6 +98,20 @@ class login{
                     }
                     
                     break;
+                case 'comprovar_codigo':
+                        $result = logins::comprovar_code($_POST['codigo']);
+                        echo json_encode($result);
+                    break;
+                case 'guardar_pass':
+                        $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
+                        $arr = [
+                            'pasword' => $password,
+                            'email' => $_POST['email']
+                        ];
+                        $guardar = new logins($arr);
+                        $resultado = $guardar->update_pass();
+                        echo json_encode($resultado);
+                    break;
             }
         }
 }

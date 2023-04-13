@@ -1,3 +1,5 @@
+// const { isNumeric } = require("jquery");
+
 //constante donde se envia las peticiones fech
 const urlprincipal = "/principal";
 //crea las opciones del menu
@@ -21,14 +23,70 @@ const seccion_menu = ($resultado) =>{
                         <img src="imagenes/voto2.png" alt="registro-botantes" class="icono-menu-opciones">
                         <span>Votantes</span>
                     </div>`;
+                    dahss()
     }else{
         div = `
                     <div class="boton-transparente" id="opfor" onclick="Formulario_votantes()">
                         <img src="imagenes/voto2.png" alt="registro-botantes" class="icono-menu-opciones">
                         <span>Votantes</span>
-                    </div>`;
+                    </div>
+                    <div class="boton-transparente" id="optfive" onclick="tabla_votantes()">
+                        <img src="imagenes/usuarios.png" alt="ver_botantes" class="icono-menu-opciones">
+                        <span>Votantes</span>
+                    </div>
+                    `;
+                    Formulario_votantes()
     }
     $('#seccion-botones').html(div);
+}
+//pantalla botantes
+async function tabla_votantes(){
+    const datos = new FormData();
+    datos.append('tipo','tabla_votos');
+    try {
+        const url =urlprincipal;
+        const respuesta = await fetch(url,{
+            method: 'POST',
+            body: datos 
+        });
+        const resultado = await respuesta.json();
+        let filas = '';
+        resultado.forEach(result =>{
+            filas +=`
+            <tr>
+            <td>${result['0']}</td>
+            <td>${result['1']}</td>
+            <td>${result['2']}</td>
+            <td>${result['3']}</td>
+            <td>${result['4']}</td>
+            <td>${result['5']}</td>
+            <td>${result['6']}</td>
+            <tr>
+            `;
+        });
+        $('#contenido').html(` 
+        <div id="lista_Lideres" class="tabla">
+                <table class="tabla_votos">
+                    <thead>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th>Genero</th>
+                        <th>Cedula</th>
+                        <th>Nombre</th>
+                        <th>Mesa</th>
+                    </thead>
+                    <tbody id="filas_lideres">
+                        <tr >
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+        `);
+        $('#filas_lideres').html(filas);
+    } catch (error) {
+        console.log(error);
+    }
 }
 // consulta el rol con el que se inicio seccion
 async function session() {
@@ -286,8 +344,29 @@ const dahss = () =>{
     <div id="map" class="map"></div>
     <div id="mapa_sin" class="mapacero"></div>
     </div>
-    <div class="hombre-mujer">
-        
+    <div class="hombre-mujer" id="segunda_estadistica">
+        <div id="opciones_meta" class="opciones_meta"> 
+            <img src="build/img/objetivo.png" class="icono-menu onclick="mostra_()"">
+           <span>Registrar meta<apan>
+           <input type="number" id="meta">
+           <div class="btnmeta" onclick="registrar_meta()"><span>Registre</span></div>
+        </div>
+        <div id="metas" class="metas">
+        <div class="titulo">
+        <span>META</span>
+        <span>10.000 votos</span>
+        </div>
+        <div class="numero_votos">
+            <div class="totalvotantes">
+                <span>TOTAL VOTANTES</span>
+                <span>1.000</span>
+            </div>
+            <div class="faltantes">
+                <span>FALTAN</span>
+                <span>9.000</span>
+            </div>
+        </div>
+        </div>
     </div>
     <div class="votantes" id="votantes">
   
@@ -304,7 +383,6 @@ const dahss = () =>{
             <th>Votos F</th>
             <th>Votos O</th>
             <th>Total</th>
-            <th>Inavilitar</th>
         </thead>
         <tbody id="filas_lideres">
         <tr >
@@ -318,7 +396,76 @@ const dahss = () =>{
     cargar();
     hombre_mujer_otro();
     table_lideres();
+    rendermeta();
 }
+//registrar meta
+async function registrar_meta(){
+    const datos = new FormData();
+    let valor = document.getElementById("meta").value;
+    let v = parseInt(valor);
+    console.log(v);
+    if(valor == '' || isNaN(v)){
+        alert("digite la meta en numeros");
+    }else{
+        datos.append('tipo','registrar_meta');
+        datos.append('meta',v);
+        try {
+            const url =urlprincipal;
+            const respuesta = await fetch(url,{
+                method: 'POST',
+                body: datos 
+            });
+            const resultado = await respuesta.json();
+            if(resultado == true){ alert("se registro la meta de forma correcta");
+            rendermeta()}
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+//renderizar meta 
+async function rendermeta(){
+    const datos = new FormData();
+        datos.append('tipo','allmeta');
+
+        try {
+            const url =urlprincipal;
+            const respuesta = await fetch(url,{
+                method: 'POST',
+                body: datos 
+            });
+            const resultado = await respuesta.json();
+            // console.log(resultado['faltan']);
+            let html = '';
+            html =`        <div id="opciones_meta" class="opciones_meta"> 
+            <img src="build/img/objetivo.png" class="icono-menu onclick="mostra_()"">
+           <span>Registrar meta<apan>
+           <input type="number" id="meta">
+           <div class="btnmeta" onclick="registrar_meta()"><span>Registre</span></div>
+            </div>
+            <div id="metas" class="metas">
+            <div class="titulo">
+            <span>META</span>
+            <span>${resultado['meta']} votos</span>
+            </div>
+            <div class="numero_votos">
+            <div class="totalvotantes">
+                <span>TOTAL VOTANTES</span>
+                <span>${resultado['votos']} </span>
+            </div>
+            <div class="faltantes">
+                <span>FALTAN</span>
+                <span>${resultado['faltan']} </span>
+            </div>
+            </div>
+            </div>`;
+        $('#segunda_estadistica').html(html)
+        } catch (error) {
+            console.log(error);
+        }
+}
+   
+
 //consulta las estadisticas de todos los lideres
 const table_lideres = () =>{
     table_lideres_();
@@ -654,7 +801,7 @@ async function select_lideres(){
         });
         const puntos = await localizacion.json();
         console.log(puntos);
-        let options = `<option value="0" select>--seleccione--</opction>`;
+        let options = `<option value="0" select>Seleccione el Lider</opction>`;
         if(length.puntos != 0){
             puntos.forEach(resultp =>{
                 options += `<option  value="${resultp['id']}">${resultp['nombre']}</option>`;
@@ -769,32 +916,32 @@ const Formulario_votantes = () =>{
                 <p>Votante</p>
                     <section >
                         <label for="">Nombre</label>
-                        <input type="text" id="nombre" name="nombre">
+                        <input type="text" id="nombre" name="nombre" required>
                         <label for="">Apellido</label>
-                        <input type="text" id="apellido" name="apellido">
+                        <input type="text" id="apellido" name="apellido" required>
                         <label for="">Telefono</label>
-                        <input type="text" id="telefono" name="telefono">
+                        <input type="text" id="telefono" name="telefono" required>
                         <label for="">Correo</label>
-                        <input type="email" id="correo" name="correo">
+                        <input type="email" id="correo" name="correo" required>
                         
                     </section >
              </div>
             <div class="tarjetas">
                     <section >
                         <label for="">Genero</label>
-                        <select name="genero" id="genero" >
-                            <option selected value="">--seleccione--</option>
+                        <select name="genero" id="genero" required>
+                            <option selected value="" >--seleccione--</option>
                             <option  value="m">Masculino</option>
                             <option  value="f">Femenino</option>
                             <option  value="o">Otro</option>
                         </select>
                         <label for="">Cedula</label>
-                        <input type="number" id="cedula" name="cedula">
+                        <input type="number" id="cedula" name="cedula" required>
                         <label for="">Puesto de votaciones</label>
-                        <select name="puestos" id="puestos" onchange="mesas_registro()" >
+                        <select name="puestos" id="puestos" onchange="mesas_registro()" required>
                         </select>
                         <label for="">Numero de mesa</label>
-                        <select id="mesas">
+                        <select id="mesas" required>
                         </select>
                     </section >
             </div>
@@ -886,7 +1033,10 @@ async function puestosid() {
     let region = document.getElementById("region").value;
     let password = document.getElementById("password").value;
     let foto = document.querySelector('#photos').files[0];
-    
+    if(!(nombre != '' && apellido != '' && cedula != '' && data != '' && email != '' && telefono != '' && ciudad != '' && region != '' && password != '' && foto != ''))
+    {
+        alert("digite todos los campos");
+    }else{
     datos.append('tipo',"lideres");
     datos.append('nombre',nombre);
     datos.append('apellido',apellido);
@@ -932,6 +1082,7 @@ async function puestosid() {
         console.log(error);
     }
 }
+}
 //insert de los votantes
 async function votantes(){
 
@@ -944,22 +1095,27 @@ async function votantes(){
     let cedula = document.getElementById("cedula").value;
     let puestos = document.getElementById("puestos").value;
     let mesa = document.getElementById("mesas").value;
-    datos.append('nombre',nombre);
-    datos.append('telefono',telefono);
-    datos.append('correo',correo);
-    datos.append('genero',genero);
-    datos.append('cedula',cedula);
-    datos.append('puesto_id',puestos);
-    datos.append('mesa',mesa);
-    datos.append('apellido',apellido);
-    datos.append('tipo','insertarvotantes');
-  
-    try {
-        const url = urlprincipal;
-        const respuesta = await fetch(url,{
-            method: 'POST',
-            body: datos 
-        });
+    if(!(nombre != '' && apellido != '' && telefono != '' && correo != '' && genero != '' && cedula != '' && puestos != '' && mesa != ''))
+    {
+        alert("digite todos los campos");
+    }else{
+
+        datos.append('nombre',nombre);
+        datos.append('telefono',telefono);
+        datos.append('correo',correo);
+        datos.append('genero',genero);
+        datos.append('cedula',cedula);
+        datos.append('puesto_id',puestos);
+        datos.append('mesa',mesa);
+        datos.append('apellido',apellido);
+        datos.append('tipo','insertarvotantes');
+        
+        try {
+            const url = urlprincipal;
+            const respuesta = await fetch(url,{
+                method: 'POST',
+                body: datos 
+            });
         const resultado = await respuesta.json();
         if(resultado){
             alert("se inserto de forma correcta");
@@ -967,6 +1123,7 @@ async function votantes(){
     } catch (error) {
         console.log(error);
     }
+}
 }
 //inserta en la base de datos los puestos
 async function Puestos() {

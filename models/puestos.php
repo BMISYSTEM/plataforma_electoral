@@ -67,7 +67,7 @@ class puestos extends ActiveRecord{
         return $resultado;
     }
     public static function lideres_tabla(){
-        $querys = "select u.nombre, COUNT(v.usuario_id) as votos, COUNT(if(v.genero = 'm',1,null)) as masculino, COUNT(if(v.genero = 'f',1,null)) as femenino , COUNT(if(v.genero = 'o',1,null)) as otros from votantes as v inner join usuarios as u on u.id = v.usuario_id GROUP by u.nombre";
+        $querys = "select u.nombre, COUNT(v.usuario_id) as votos, COUNT(if(v.genero = 'm',1,null)) as masculino, COUNT(if(v.genero = 'f',1,null)) as femenino , COUNT(if(v.genero = 'o',1,null)) as otros,u.id as id from votantes as v inner join usuarios as u on u.id = v.usuario_id GROUP by u.nombre,u.id";
         $resultado = self::$db->query($querys);
         return $resultado->fetch_all();
     }
@@ -75,5 +75,32 @@ class puestos extends ActiveRecord{
         $querys = "select p.nombre,COUNT(v.puesto_id) as votos from votantes as v inner join puestosv as p on p.id = v.puesto_id GROUP by v.puesto_id";
         $resultado = self::$db->query($querys);
         return $resultado->fetch_all();
+    }
+    public static function allvotos($email){
+        $querys = "select v.nombre,v.telefono,v.correo,v.genero,v.cedula,p.nombre,v.mesa from votantes as v inner join puestosv as p on v.puesto_id = p.id  inner join usuarios as u on u.id = v.usuario_id where u.email = '$email'";
+        $resultado = self::$db->query($querys);
+        return $resultado->fetch_all();
+    }
+    public static function registro_meta($meta){
+        $querys = "UPDATE `meta` SET `meta` = '$meta' WHERE (`id` = '1');";
+        $resultado = self::$db->query($querys);
+        return $resultado;
+    }
+    public static function allmeta(){
+        $querys_meta = "select meta from meta";
+        $resultado = self::$db->query($querys_meta);
+        $querys_votantes = "select count(*) from votantes";
+        $resultado_votos= self::$db->query($querys_votantes);
+        $meta = $resultado->fetch_array();
+        $metas = $meta[0];
+        $votos = $resultado_votos->fetch_array();
+        $voto = $votos[0];
+        $faltan = $metas - $voto;
+        $arr=[
+            'meta' => $metas,
+            'votos' => $voto,
+            'faltan' => $faltan
+        ];
+        return $arr;
     }
 }

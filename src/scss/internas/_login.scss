@@ -6,6 +6,118 @@ body{
 }
 //dispositivos celular
 @media (max-width: 480px){
+    .cambio_contrase{
+        z-index: 999;
+         position: fixed;
+         left: 0;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         width: 100%;
+         height: 100vh;
+         display: none;
+         place-items: center;
+         background-color: transparent;
+         backdrop-filter: blur(20px);
+        .formulario{
+            height: 50%;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            text-align: center;
+            display: grid;
+            grid-template-rows: 30% 30% 10% 30%;
+            .contenedor_contra{
+                grid-row: 1/5;
+                .header_nuevaC{
+                    display: flex;
+                    justify-content: space-between;
+                    padding: .2rem;
+                    font-size: 18px;
+                    color: #5d635d;
+                }
+                .NuevaContra{
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items:center;
+                    text-align: center;
+                    input{
+                        max-width: 20rem;
+                        border: none;
+                        border-bottom: 3px solid rgb(55, 93, 216);
+                    }
+                    .error_contra{
+                        span{
+                            font-size: 13px;
+                            color: red;
+
+                        }
+                    }
+
+                }
+                .enviar_contraC{
+                    display: grid;
+                    place-items: center;
+                    .btn{
+
+                        background-color: #5ac856;
+                        border-radius: 10px;
+                        max-width: 10rem;
+                        text-align: center;
+                        color: white;
+                        &:hover{
+                            background-color: #367634;
+                            cursor: pointer;
+                        }
+                    }
+                }
+   
+            }
+            .titulo{
+                grid-row: 1/2;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                font-size: 16px;
+            }
+            .sessioncodigo{
+                grid-row: 2/3;
+
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                .input_codigo{
+                    max-width: 4rem;
+                    margin: 1rem;
+                }
+            }
+            .boton_enviar{
+                grid-row: 3/4;
+                display: grid;
+                place-items: center;
+                .btn{
+                    background-color: #5ac856;
+                    border-radius: 10px;
+                    max-width: 10rem;
+                    text-align: center;
+                    color: white;
+                    &:hover{
+                        background-color: #367634;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .footer_pass{
+                grid-row: 4/5;
+                align-items: end;
+                display: flex;
+                font-size: 12px;
+                justify-content: start;
+                color: #879393;
+            }
+        }
+    }
     .loginPage{
         // margin: auto;
         // flex-direction: column;
@@ -105,12 +217,125 @@ body{
 }
 //dispositivos medianos y grande
 @media(min-width: 480px){
+    .cambio_contrase{
+        z-index: 999;
+         position: fixed;
+         left: 0;
+         top: 0;
+         right: 0;
+         bottom: 0;
+         width: 100%;
+         height: 100vh;
+         display: none;
+         place-items: center;
+         background-color: transparent;
+         backdrop-filter: blur(20px);
+       
+        .formulario{
+            height: 50%;
+            width: 50%;
+            background-color: white;
+            border-radius: 10px;
+            text-align: center;
+            display: grid;
+            grid-template-rows: 30% 30% 10% 30%;
+            .contenedor_contra{
+                grid-row: 1/5;
+                .header_nuevaC{
+                    display: flex;
+                    justify-content: space-between;
+                    padding: .2rem;
+                    font-size: 18px;
+                    color: #5d635d;
+                }
+                .NuevaContra{
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items:center;
+                    text-align: center;
+                    input{
+                        max-width: 20rem;
+                        border: none;
+                        border-bottom: 3px solid rgb(55, 93, 216);
+                    }
+                    .error_contra{
+                        span{
+                            font-size: 13px;
+                            color: red;
+
+                        }
+                    }
+
+                }
+                .enviar_contraC{
+                    display: grid;
+                    place-items: center;
+                    .btn{
+
+                        background-color: #5ac856;
+                        border-radius: 10px;
+                        max-width: 10rem;
+                        text-align: center;
+                        color: white;
+                        &:hover{
+                            background-color: #367634;
+                            cursor: pointer;
+                        }
+                    }
+                }
+   
+            }
+            .titulo{
+                grid-row: 1/2;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                font-size: 16px;
+            }
+            .sessioncodigo{
+                grid-row: 2/3;
+
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                .input_codigo{
+                    max-width: 4rem;
+                    margin: 1rem;
+                }
+            }
+            .boton_enviar{
+                grid-row: 3/4;
+                display: grid;
+                place-items: center;
+                .btn{
+                    background-color: #5ac856;
+                    border-radius: 10px;
+                    max-width: 10rem;
+                    text-align: center;
+                    color: white;
+                    &:hover{
+                        background-color: #367634;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .footer_pass{
+                grid-row: 4/5;
+                align-items: end;
+                display: flex;
+                font-size: 12px;
+                justify-content: start;
+                color: #879393;
+            }
+        }
+    }
        .loginPage{
                // margin: auto;
                // flex-direction: column;
                // @include grid(2,2rem);
                // justify-content: space-between;
-               z-index: 9;
+               z-index: 8;
                background-image: url(/imagenes/campanas.jpg);
                background-repeat: no-repeat;
                background-size: cover;

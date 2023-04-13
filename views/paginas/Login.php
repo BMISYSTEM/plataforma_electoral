@@ -10,8 +10,14 @@
     <title>Login</title>
 </head>
 <body>
+
 <div id="modalzoom">
       
+</div>
+<div id="cambio_contrase" class="cambio_contrase">
+    <DIV class="formulario" id="formulario_contrase">
+        
+    </DIV>
 </div>
         <div class="loginPage">
         <div class="login">

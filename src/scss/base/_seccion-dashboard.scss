@@ -2,9 +2,9 @@
     .seccion-dashboard-grafic{
         display: grid;
         grid-template-columns: 50% 50%;
-        grid-template-rows: 50% 50%;
+        grid-template-rows: 50% 50% 50%;
         gap: 1rem;
-        height: 85vh;
+        height: 100%;
         width: 100%;
         padding: 2rem;
         .votantes{
@@ -69,6 +69,7 @@
         }
         .hombre-mujer{
             display: grid;
+            grid-template-columns: 20% 80%;
             place-items: center;
             grid-column: 2/3;
             grid-row: 1/2;
@@ -80,6 +81,77 @@
             -webkit-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
             -moz-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
             box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            position: relative;
+            overflow: hidden;
+            .opciones_meta{
+                grid-column: 1/2;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                background-color: transparent;
+                padding:.2rem;
+                position: absolute;
+                
+                .icono-menu{
+                    width: 24px;
+                    height: 24px;
+                    margin: 0 auto;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+                input{
+                    width: 7rem;
+                }
+                .btnmeta{
+                    background-color: rgb(53, 135, 53);
+                    color: white;
+                    width: 100%;
+                    border-radius: 8px;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: rgb(24, 94, 43);
+                    }
+                }
+            }
+            .metas{
+                grid-column: 2/3;
+                display: grid;
+                place-items: center;
+                width: 100%;
+                height: 80%;
+                margin: 0;
+                grid-template-rows: 50% 50%;
+                .titulo{
+                    grid-row: 1/2;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                }
+                .numero_votos{
+                    grid-row: 2/3;
+                    display: grid;
+                    width: 100%;
+                    grid-template-columns: 50% 50%;
+                    .totalvotantes{
+                        grid-column: 1/2;
+                        display: flex;
+                        text-align: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        width: 100%;
+                    }
+                    .faltantes{
+                        grid-column: 2/3;
+                        display: flex;
+                        text-align: center;
+                        justify-content: center;
+                        flex-direction: column;
+                    }
+                }
+            }
         }
         .votantes{
             display: grid;
@@ -133,13 +205,40 @@
             box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
             overflow: auto;
         }
+        .lista_lideres{
+            display: grid;
+            place-items: center;
+            grid-column: 1/3;
+            grid-row: 3/4;
+            background-color: rgba(255, 255, 255, 0.371);
+            backdrop-filter: blur(4.0px);
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            -webkit-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            -moz-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            overflow: auto;
+            .tabla_lideres{
+                border-collapse: collapse;
+                width: 100%;
+                border-radius: 10px;
+                th, td {
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                  }
+                  tr:hover {background-color: rgb(80, 238, 255);}
+            }
+
+        }
     }
 
 }
 @media (max-width: 480px){
     .seccion-dashboard-grafic{
         display: grid;
-        grid-template-rows: 30% 20% 30% 20%;
+        grid-template-rows: 30% 20% 30% 20% 20%;
         gap: 0.5rem;
         height: 100vh;
         width: 100%;
@@ -196,6 +295,72 @@
             height: 100%;
             width: 100%;
             border-radius: 10px;
+            .opciones_meta{
+                grid-column: 1/2;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                background-color: beige;
+                padding:.2rem;
+                position: absolute;
+                
+                .icono-menu{
+                    width: 24px;
+                    height: 24px;
+                    margin: 0 auto;
+                }
+                input{
+                    width: 7rem;
+                }
+                .btnmeta{
+                    background-color: rgb(53, 135, 53);
+                    color: white;
+                    width: 100%;
+                    border-radius: 8px;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: rgb(24, 94, 43);
+                    }
+                }
+            }
+            .metas{
+                grid-column: 2/3;
+                display: grid;
+                place-items: center;
+                width: 100%;
+                height: 80%;
+                margin: 0;
+                grid-template-rows: 50% 50%;
+                .titulo{
+                    grid-row: 1/2;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                }
+                .numero_votos{
+                    grid-row: 2/3;
+                    display: grid;
+                    width: 100%;
+                    grid-template-columns: 50% 50%;
+                    .totalvotantes{
+                        grid-column: 1/2;
+                        display: flex;
+                        text-align: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        width: 100%;
+                    }
+                    .faltantes{
+                        grid-column: 2/3;
+                        display: flex;
+                        text-align: center;
+                        justify-content: center;
+                        flex-direction: column;
+                    }
+                }
+            }
         }
         .votantes{
             grid-row: 3/4;
@@ -242,6 +407,56 @@
             border-radius: 10px;
             overflow: auto;
         }
+        .lista_lideres{
+            display: grid;
+            place-items: center;
+            grid-row: 5/6;
+            background-color: rgba(255, 255, 255, 0.371);
+            backdrop-filter: blur(4.0px);
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            -webkit-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            -moz-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+            overflow: auto;
+            .tabla_lideres{
+                border-collapse: collapse;
+                width: 100%;
+                border-radius: 10px;
+                th, td {
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                  }
+                  tr:hover {background-color: rgb(80, 238, 255);}
+            }
+
+        }
+    }
+
+}
+
+.tabla{
+    background-color: rgba(255, 255, 255, 0.371);
+    backdrop-filter: blur(4.0px);
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    -webkit-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+    -moz-box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+    box-shadow: -1px 0px 30px -3px rgba(104,101,158,1);
+    overflow: auto;
+    .tabla_votos{
+        border-collapse: collapse;
+        width: 100%;
+        border-radius: 10px;
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+          }
+          tr:hover {background-color: rgb(80, 238, 255);}
     }
 
 }

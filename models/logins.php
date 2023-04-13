@@ -61,6 +61,11 @@ class logins extends ActiveRecord{
             return "2";
         }
     }
+    public static function comprovar_code($codigo){
+        $query = "select email FROM usuarios where code = '". $codigo ."'";
+        $result = self::$db->query($query);
+        return $result->fetch_assoc();
+    }
 
     public static function seleccion_lideres(){
         $querys = "select id,nombre,rol from usuarios";
@@ -74,6 +79,11 @@ class logins extends ActiveRecord{
     }
     public  function insert_code($code){
         $querys = "update usuarios set code = '$code' where email = '$this->email'";
+        $resultado = self::$db->query($querys);
+        return $resultado;
+    }
+    public  function update_pass(){
+        $querys = "update usuarios set pass = '$this->pasword' where email = '$this->email'";
         $resultado = self::$db->query($querys);
         return $resultado;
     }
